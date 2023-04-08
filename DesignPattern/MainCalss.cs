@@ -8,15 +8,13 @@ namespace DesignPattern
 {
     internal class MainCalss
     {
+        private List<YunheEmpolyee> people = new List<YunheEmpolyee>();
+
         static void Main(string[] args)
         {
-            PersonFactory factory = new PersonFactory();
+            MainCalss main = new MainCalss();
 
-            Person mainCharacter = factory.CreatePerson(PersonType.MainCharacter);
-            Person partner = factory.CreatePerson(PersonType.Partner);
-            Person npc = factory.CreatePerson(PersonType.NPC);
 
-            Console.WriteLine(mainCharacter.Talk());
         }
     }
 }

@@ -47,7 +47,7 @@
     <Compile Include="Person\MainCharacter.cs" />
     <Compile Include="Person\NPC.cs" />
     <Compile Include="Person\Partner.cs" />
-    <Compile Include="Person\Person.cs" />
+    <Compile Include="Person\Character.cs" />
     <Compile Include="Factory\PersonFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
