@@ -4,7 +4,11 @@ namespace DesignPattern
 {
     public class HighClass : YunheEmpolyee
     {
-        public override YunheEmpolyee AssemblyAbility()
+        public HighClass(EmployeeInfo employeeInfo) : base(employeeInfo)
+        {
+        }
+
+        public override void EmpolyeeAbility()
         {
             throw new NotImplementedException();
         }

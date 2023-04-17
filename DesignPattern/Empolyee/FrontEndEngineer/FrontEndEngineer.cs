@@ -2,9 +2,16 @@
 
 namespace DesignPattern
 {
-    public abstract class FrontEndEngineer : YunheEmpolyee
-    {        
-        public abstract void Coding();
+    public class FrontEndEngineer : YunheEmpolyee
+    {
+        public FrontEndEngineer(EmployeeInfo employeeInfo) : base(employeeInfo)
+        {
+            
+        }
 
+        public override void EmpolyeeAbility()
+        {
+            Skills.Add(new WriteCode());
+        }
     }
 }

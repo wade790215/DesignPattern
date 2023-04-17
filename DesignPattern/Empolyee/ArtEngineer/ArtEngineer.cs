@@ -4,9 +4,13 @@ namespace DesignPattern
 {
     public class ArtEngineer : YunheEmpolyee
     {
-        public override YunheEmpolyee AssemblyAbility()
+        public ArtEngineer(EmployeeInfo employeeInfo) : base(employeeInfo)
         {
-            throw new NotImplementedException();
+        }
+
+        public override void EmpolyeeAbility()
+        {
+            Skills.Add(new Modeling());
         }
     }
 }

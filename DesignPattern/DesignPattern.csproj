@@ -43,16 +43,30 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Company\IProjectTask.cs" />
+    <Compile Include="Company\ProjectManagement.cs" />
+    <Compile Include="Empolyee\ArtEngineer\JuniorArtEngineer.cs" />
+    <Compile Include="Empolyee\ArtEngineer\SeniorArtEngineer.cs" />
+    <Compile Include="Empolyee\EmployeeInfo.cs" />
+    <Compile Include="Empolyee\FrontEndEngineer\JuniorFrontEndEngineer.cs" />
+    <Compile Include="Empolyee\FrontEndEngineer\SeniorFrontEndEngineer.cs" />
+    <Compile Include="Empolyee\HighClass\HighClass.cs" />
+    <Compile Include="Empolyee\HumanResources.cs" />
+    <Compile Include="Empolyee\HumanResourcesManagementSystem.cs" />
+    <Compile Include="Ability\ISkill.cs" />
+    <Compile Include="Empolyee\Planner\JuniorPlanner.cs" />
+    <Compile Include="Empolyee\Planner\SeniorPlanner.cs" />
     <Compile Include="MainCalss.cs" />
-    <Compile Include="Person\MainCharacter.cs" />
-    <Compile Include="Person\NPC.cs" />
-    <Compile Include="Person\Partner.cs" />
-    <Compile Include="Person\Character.cs" />
-    <Compile Include="Factory\PersonFactory.cs" />
+    <Compile Include="Empolyee\FrontEndEngineer\FrontEndEngineer.cs" />
+    <Compile Include="Empolyee\ArtEngineer\ArtEngineer.cs" />
+    <Compile Include="Empolyee\Planner\Planner.cs" />
+    <Compile Include="Empolyee\YunheEmpolyee.cs" />
+    <Compile Include="Company\YunheCompany.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

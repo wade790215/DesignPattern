@@ -4,9 +4,13 @@ namespace DesignPattern
 {
     public class Planner : YunheEmpolyee
     {
-        public override YunheEmpolyee AssemblyAbility()
+        public Planner(EmployeeInfo employeeInfo) : base(employeeInfo)
         {
-            throw new NotImplementedException();
+        }
+
+        public override void EmpolyeeAbility()
+        {
+            Skills.Add(new CoursePlanning());   
         }
     }
 }
