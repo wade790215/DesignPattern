@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
+using System.Net.Http.Headers;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,73 +13,63 @@ namespace DesignPattern
     {
         static void Main(string[] args)
         {
-            YunheCompany yunheCompany = new YunheCompany();
+            #region 允和公司
+            //YunheCompany yunheCompany = new YunheCompany();
 
-            foreach (var frontEndEngineers in ApplyFrontEndEngineer())
-            {
-                yunheCompany.HireStaff(frontEndEngineers);
-            }
+            //foreach (var frontEndEngineers in EmpolyeeInfoDatas.ApplyFrontEndEngineer())
+            //{
+            //    yunheCompany.HireStaff(frontEndEngineers);
+            //}
 
-            List<YunheEmpolyee> frontEndEngineersSenior = yunheCompany.QueryEmployees(Position.FrontEndEngineer, Seniority.Senior);
+            //List<YunheEmpolyee> frontEndEngineersSenior = yunheCompany.QueryEmployees(Position.FrontEndEngineer, Seniority.Senior);
 
-            var projectManagement = new ProjectManagement();            
-            var eoTask = new EOTask();
+            //var projectManagement = new ProjectManagement();
+            //var eoTask = new EOTask();
 
-            projectManagement.AssignWork(frontEndEngineersSenior, typeof(Debug), eoTask);
+            //projectManagement.AssignWork(frontEndEngineersSenior, typeof(Debug), eoTask);
+            #endregion
+
+            #region 依賴反轉
+            //DIP dip = new DIP();
+            //dip.Main();
+            #endregion
+
+            #region 李氏替換
+            //LSP lsp = new LSP();    
+            //lsp.Main();
+            #endregion
+
+            #region 裝飾者模式
+            //DecoratorPattern decoratorPattern = new DecoratorPattern();
+            //decoratorPattern.Main();
+            #endregion
+
+            string s = "abaccdeff";
+            Console.WriteLine(RepeatNum(s, 2));
         }
 
-        public static List<EmployeeInfo> ApplyFrontEndEngineer()
+        public static int RepeatNum(string s, int n)
         {
-            List<EmployeeInfo> yunheEmpolyees = new List<EmployeeInfo>();
+            Dictionary<char, int> dic = new Dictionary<char, int>();
 
-            EmployeeInfo EChenInfo = new EmployeeInfo()
+            for (int i = 0; i < s.Length; i++)
             {
-                name = "EChen",
-                seniority = Seniority.Senior,
-                position = Position.FrontEndEngineer,
-                age = 31,
-                salary = 9527
-            };
+                if (dic.ContainsKey(s[i]))
+                {
+                    dic[s[i]] = dic[s[i]] + 1;
 
-
-            EmployeeInfo WadeInfo = new EmployeeInfo()
-            {
-                name = "Wade",
-                seniority = Seniority.Junior,
-                position = Position.FrontEndEngineer,
-                age = 32,
-                salary = 666
-            };
-
-            EmployeeInfo JackChangInfo = new EmployeeInfo()
-            {
-                name = "JackChang",
-                seniority = Seniority.Junior,
-                position = Position.FrontEndEngineer,
-                age = 23,
-                salary = 520
-            };
-
-            EmployeeInfo BoQianInfo = new EmployeeInfo()
-            {
-                name = "BoQian",
-                seniority = Seniority.Junior,
-                position = Position.FrontEndEngineer,
-                age = 28,
-                salary = 168
-            };
-
-            yunheEmpolyees.Add(EChenInfo);
-            yunheEmpolyees.Add(WadeInfo);
-            yunheEmpolyees.Add(JackChangInfo);
-            yunheEmpolyees.Add(BoQianInfo);
-
-            for (int i = 0; i < yunheEmpolyees.Count; i++)
-            {
-                yunheEmpolyees[i].employeeId = i + 1;
+                    if (dic[s[i]] == n)
+                    {
+                        return s[i];
+                    }
+                }
+                else
+                {
+                    dic.Add(s[i], 1);
+                }
             }
-
-            return yunheEmpolyees;  
+           
+            return -1;
         }
     }
 }

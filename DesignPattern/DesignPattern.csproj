@@ -45,9 +45,12 @@
   <ItemGroup>
     <Compile Include="Company\IProjectTask.cs" />
     <Compile Include="Company\ProjectManagement.cs" />
+    <Compile Include="DecoratorPattern\DecoratorPattern.cs" />
+    <Compile Include="DIP\DIP.cs" />
     <Compile Include="Empolyee\ArtEngineer\JuniorArtEngineer.cs" />
     <Compile Include="Empolyee\ArtEngineer\SeniorArtEngineer.cs" />
     <Compile Include="Empolyee\EmployeeInfo.cs" />
+    <Compile Include="Empolyee\EmpolyeeInfoDatas.cs" />
     <Compile Include="Empolyee\FrontEndEngineer\JuniorFrontEndEngineer.cs" />
     <Compile Include="Empolyee\FrontEndEngineer\SeniorFrontEndEngineer.cs" />
     <Compile Include="Empolyee\HighClass\HighClass.cs" />
@@ -56,6 +59,7 @@
     <Compile Include="Ability\ISkill.cs" />
     <Compile Include="Empolyee\Planner\JuniorPlanner.cs" />
     <Compile Include="Empolyee\Planner\SeniorPlanner.cs" />
+    <Compile Include="LSP\LSP.cs" />
     <Compile Include="MainCalss.cs" />
     <Compile Include="Empolyee\FrontEndEngineer\FrontEndEngineer.cs" />
     <Compile Include="Empolyee\ArtEngineer\ArtEngineer.cs" />
