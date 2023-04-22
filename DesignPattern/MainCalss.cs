@@ -35,7 +35,7 @@ namespace DesignPattern
             #endregion
 
             #region 李氏替換
-            //LSP lsp = new LSP();    
+            //LSP lsp = new LSP();
             //lsp.Main();
             #endregion
 
@@ -44,32 +44,11 @@ namespace DesignPattern
             //decoratorPattern.Main();
             #endregion
 
-            string s = "abaccdeff";
-            Console.WriteLine(RepeatNum(s, 2));
-        }
+            #region 代理模式
+            //ProxyPattern proxyPattern = new ProxyPattern();
+            //proxyPattern.Main();
+            #endregion
 
-        public static int RepeatNum(string s, int n)
-        {
-            Dictionary<char, int> dic = new Dictionary<char, int>();
-
-            for (int i = 0; i < s.Length; i++)
-            {
-                if (dic.ContainsKey(s[i]))
-                {
-                    dic[s[i]] = dic[s[i]] + 1;
-
-                    if (dic[s[i]] == n)
-                    {
-                        return s[i];
-                    }
-                }
-                else
-                {
-                    dic.Add(s[i], 1);
-                }
-            }
-           
-            return -1;
         }
     }
 }
