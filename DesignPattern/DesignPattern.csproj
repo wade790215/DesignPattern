@@ -59,6 +59,7 @@
     <Compile Include="Ability\ISkill.cs" />
     <Compile Include="Empolyee\Planner\JuniorPlanner.cs" />
     <Compile Include="Empolyee\Planner\SeniorPlanner.cs" />
+    <Compile Include="FactoryMethodPattern\FactoryMethodPattern.cs" />
     <Compile Include="LSP\LSP.cs" />
     <Compile Include="MainCalss.cs" />
     <Compile Include="Empolyee\FrontEndEngineer\FrontEndEngineer.cs" />
@@ -67,8 +68,10 @@
     <Compile Include="Empolyee\YunheEmpolyee.cs" />
     <Compile Include="Company\YunheCompany.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PrototypePattern\PrototypePattern.cs" />
     <Compile Include="ProxyPattern\IDelivery.cs" />
     <Compile Include="ProxyPattern\ProxyPattern.cs" />
+    <Compile Include="TemplateMethodPattern.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

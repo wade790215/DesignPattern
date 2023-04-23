@@ -49,6 +49,20 @@ namespace DesignPattern
             //proxyPattern.Main();
             #endregion
 
+            #region 工廠方法模式
+            //FactoryMethodPattern factoryMethodPattern = new FactoryMethodPattern();
+            //factoryMethodPattern.Main();
+            #endregion
+
+            #region 原型模式
+            //PrototypePattern prototypePattern = new PrototypePattern();
+            //prototypePattern.Main();
+            #endregion
+
+            #region 模板方法模式
+            //TemplateMethodPattern templateMethodPattern = new TemplateMethodPattern();
+            //templateMethodPattern.Main();
+            #endregion
         }
     }
 }
