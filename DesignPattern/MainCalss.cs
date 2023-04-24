@@ -63,6 +63,21 @@ namespace DesignPattern
             //TemplateMethodPattern templateMethodPattern = new TemplateMethodPattern();
             //templateMethodPattern.Main();
             #endregion
+
+            #region 外觀模式
+            //FacadePattern facadePattern = new FacadePattern();
+            //facadePattern.Main();
+            #endregion
+
+            #region 建造者模式
+            //BuilderPattern builderPattern = new BuilderPattern();
+            //builderPattern.Main();
+            #endregion
+
+            #region 觀察者模式
+            //ObserverPattern observerPattern = new ObserverPattern();
+            //observerPattern.Main();
+            #endregion
         }
     }
 }
