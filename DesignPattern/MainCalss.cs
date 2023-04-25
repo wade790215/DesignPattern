@@ -29,6 +29,11 @@ namespace DesignPattern
             //projectManagement.AssignWork(frontEndEngineersSenior, typeof(Debug), eoTask);
             #endregion
 
+            #region 策略模式
+            //StrategyPattern strategyPattern = new StrategyPattern();
+            //strategyPattern.Main();
+            #endregion
+
             #region 依賴反轉
             //DIP dip = new DIP();
             //dip.Main();
