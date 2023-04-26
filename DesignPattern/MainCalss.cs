@@ -54,11 +54,6 @@ namespace DesignPattern
             //proxyPattern.Main();
             #endregion
 
-            #region 工廠方法模式
-            //FactoryMethodPattern factoryMethodPattern = new FactoryMethodPattern();
-            //factoryMethodPattern.Main();
-            #endregion
-
             #region 原型模式
             //PrototypePattern prototypePattern = new PrototypePattern();
             //prototypePattern.Main();
@@ -82,6 +77,16 @@ namespace DesignPattern
             #region 觀察者模式
             //ObserverPattern observerPattern = new ObserverPattern();
             //observerPattern.Main();
+            #endregion
+
+            #region 工廠方法模式
+            //FactoryMethodPattern factoryMethodPattern = new FactoryMethodPattern();
+            //factoryMethodPattern.Main();
+            #endregion
+
+            #region 探討抽象工廠模式
+            //AbstractFactoryPattern abstractFactoryPattern = new AbstractFactoryPattern();
+            //abstractFactoryPattern.Main();
             #endregion
         }
     }
