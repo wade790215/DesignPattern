@@ -88,6 +88,11 @@ namespace DesignPattern
             //AbstractFactoryPattern abstractFactoryPattern = new AbstractFactoryPattern();
             //abstractFactoryPattern.Main();
             #endregion
+
+            #region 狀態模式
+            StatePattern statePattern = new StatePattern();
+            statePattern.Main();
+            #endregion
         }
     }
 }

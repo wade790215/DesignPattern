@@ -44,7 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AbstractFactoryPattern.cs" />
+    <Compile Include="FactoryMethodPattern\AbstractFactoryPattern.cs" />
     <Compile Include="BuilderPattern\BuilderPattern.cs" />
     <Compile Include="Company\IProjectTask.cs" />
     <Compile Include="Company\ProjectManagement.cs" />
@@ -76,6 +76,7 @@
     <Compile Include="PrototypePattern\PrototypePattern.cs" />
     <Compile Include="ProxyPattern\IDelivery.cs" />
     <Compile Include="ProxyPattern\ProxyPattern.cs" />
+    <Compile Include="StatePattern\StatePattern.cs" />
     <Compile Include="Strategy\StrategyPattern.cs" />
     <Compile Include="TemplateMethodPattern\TemplateMethodPattern.cs" />
   </ItemGroup>
