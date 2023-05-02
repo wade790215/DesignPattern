@@ -44,6 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdapterPattern.cs" />
     <Compile Include="FactoryMethodPattern\AbstractFactoryPattern.cs" />
     <Compile Include="BuilderPattern\BuilderPattern.cs" />
     <Compile Include="Company\IProjectTask.cs" />

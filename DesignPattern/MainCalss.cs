@@ -90,8 +90,13 @@ namespace DesignPattern
             #endregion
 
             #region 狀態模式
-            StatePattern statePattern = new StatePattern();
-            statePattern.Main();
+            //StatePattern statePattern = new StatePattern();
+            //statePattern.Main();
+            #endregion
+
+            #region 轉接器模式
+            AdapterPattern adapterPattern = new AdapterPattern();
+            adapterPattern.Main();
             #endregion
         }
     }
