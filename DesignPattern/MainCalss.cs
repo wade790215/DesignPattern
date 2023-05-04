@@ -100,8 +100,13 @@ namespace DesignPattern
             #endregion
 
             #region 備忘錄模式
-            MementoPattern mementoPattern = new MementoPattern();
-            mementoPattern.Main();
+            //MementoPattern mementoPattern = new MementoPattern();
+            //mementoPattern.Main();
+            #endregion
+
+            #region 組合模式
+            //CompositePattern compositePattern = new CompositePattern();
+            //compositePattern.Main();
             #endregion
         }
     }

@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AdapterPattern\AdapterPattern.cs" />
+    <Compile Include="CompositePattern\CompositePattern.cs" />
     <Compile Include="FactoryMethodPattern\AbstractFactoryPattern.cs" />
     <Compile Include="BuilderPattern\BuilderPattern.cs" />
     <Compile Include="Company\IProjectTask.cs" />
