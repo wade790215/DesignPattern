@@ -44,7 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AdapterPattern.cs" />
+    <Compile Include="AdapterPattern\AdapterPattern.cs" />
     <Compile Include="FactoryMethodPattern\AbstractFactoryPattern.cs" />
     <Compile Include="BuilderPattern\BuilderPattern.cs" />
     <Compile Include="Company\IProjectTask.cs" />
@@ -72,6 +72,7 @@
     <Compile Include="Empolyee\Planner\Planner.cs" />
     <Compile Include="Empolyee\YunheEmpolyee.cs" />
     <Compile Include="Company\YunheCompany.cs" />
+    <Compile Include="MementoPattern\MementoPattern.cs" />
     <Compile Include="ObseverPattern\ObserverPattern.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PrototypePattern\PrototypePattern.cs" />
