@@ -45,6 +45,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AdapterPattern\AdapterPattern.cs" />
+    <Compile Include="CARPPattern.cs" />
+    <Compile Include="CommandPattern.cs" />
     <Compile Include="CompositePattern\CompositePattern.cs" />
     <Compile Include="FactoryMethodPattern\AbstractFactoryPattern.cs" />
     <Compile Include="BuilderPattern\BuilderPattern.cs" />

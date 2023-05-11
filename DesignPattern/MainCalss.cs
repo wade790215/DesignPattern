@@ -108,6 +108,16 @@ namespace DesignPattern
             //CompositePattern compositePattern = new CompositePattern();
             //compositePattern.Main();
             #endregion
+
+            #region 合成聚合復合模式
+            //CARPPattern Pattern = new CARPPattern();
+            //Pattern.Main();
+            #endregion
+
+            #region 命令模式
+            CommandPattern commandPattern = new CommandPattern();
+            commandPattern.Main();
+            #endregion
         }
     }
 }
