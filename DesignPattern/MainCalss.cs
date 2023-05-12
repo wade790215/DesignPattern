@@ -123,6 +123,11 @@ namespace DesignPattern
             //ChainOfResponsibilityPattern chainOfResponsibilityPattern = new ChainOfResponsibilityPattern();
             //chainOfResponsibilityPattern.Main();
             #endregion
+
+            #region 中介者模式
+            MediatorPattern mediatorPattern = new MediatorPattern();
+            mediatorPattern.Main();
+            #endregion
         }
     }
 }

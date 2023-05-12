@@ -45,9 +45,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AdapterPattern\AdapterPattern.cs" />
-    <Compile Include="CARPPattern.cs" />
-    <Compile Include="ChainOfResponsibilityPattern.cs" />
-    <Compile Include="CommandPattern.cs" />
+    <Compile Include="CARPPattern\CARPPattern.cs" />
+    <Compile Include="ChainOfResponsibilityPattern\ChainOfResponsibilityPattern.cs" />
+    <Compile Include="CommandPattern\CommandPattern.cs" />
     <Compile Include="CompositePattern\CompositePattern.cs" />
     <Compile Include="FactoryMethodPattern\AbstractFactoryPattern.cs" />
     <Compile Include="BuilderPattern\BuilderPattern.cs" />
@@ -76,6 +76,7 @@
     <Compile Include="Empolyee\Planner\Planner.cs" />
     <Compile Include="Empolyee\YunheEmpolyee.cs" />
     <Compile Include="Company\YunheCompany.cs" />
+    <Compile Include="MediatorPattern.cs" />
     <Compile Include="MementoPattern\MementoPattern.cs" />
     <Compile Include="ObseverPattern\ObserverPattern.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
