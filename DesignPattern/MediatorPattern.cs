@@ -1,81 +1,110 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace DesignPattern
 {
+    //中介者模式的目的是要解除物件之間的耦合，並集中管理物件之間的溝通，如果要有新的物件只需要在中介者加入並可使用
+    //缺點是會造成中介者本身複雜化
+    //有點像是寫Controller把需要的功能透過控制器組裝並驅動
+
     internal class MediatorPattern
     {
         internal void Main()
         {
-            ConcreteMediator mediator = new ConcreteMediator();
-            Colleague colleague1 = new ConcreteColleague1(mediator);
-            Colleague colleague2 = new ConcreteColleague2(mediator);
-            //mediator.Colleague1 = colleague1;
-            //mediator.Colleague2 = colleague2;
-            colleague1.Send("吃飯了嗎?");
-            colleague2.Send("還沒");
+            Mediator mediator = new PM();
+            Colleague programmer = new Programmer(mediator, "前端");
+            Colleague art = new Art(mediator, "美術");
+            mediator.AddColleague(programmer);
+            mediator.AddColleague(art);
+
+            programmer.SendTo("幫我放物件到美術場景內", art);
+            art.SendAllExceptMyself("前端們幫我開發好用工具");
         }
     }
 
     internal abstract class Mediator
     {
-        internal abstract void Send(string message, Colleague colleague);
+        protected List<Colleague> ColleagueList = new List<Colleague>();
+
+        internal void AddColleague(Colleague colleague)
+        {
+            ColleagueList.Add(colleague);
+        }
+
+        internal void RemoveColleague(Colleague colleague)
+        {
+            ColleagueList.Remove(colleague);
+        }
+
+        internal Colleague GetColleague(Colleague colleague)
+        {
+            return ColleagueList.Find(c => c.Identifier == colleague.Identifier);
+        }
+
+        internal abstract void SendAllExceptMyself(string message, Colleague colleague);
+        internal abstract void SendTo(string message, Colleague colleague);
     }
 
     internal abstract class Colleague
     {
         protected Mediator mediator;
-        internal Colleague(Mediator mediator)
+        public string Identifier { get; private set; }
+        internal Colleague(Mediator mediator, string identifier)
         {
             this.mediator = mediator;
+            Identifier = identifier;
         }
-        internal abstract void Send(string message);
+        internal virtual void SendAllExceptMyself(string message)
+        {
+            mediator.SendAllExceptMyself(message, this);
+        }
+
+        internal virtual void SendTo(string message , Colleague colleague)
+        {
+            mediator.SendTo(message, colleague);
+        }
         internal abstract void Notify(string message);
     }
 
-    internal class ConcreteColleague1 : Colleague
+    internal class PM : Mediator
     {
-        internal ConcreteColleague1(Mediator mediator) : base(mediator)
+        internal override void SendAllExceptMyself(string message, Colleague colleague)
         {
+            foreach (var item in ColleagueList)
+            {
+                if(item != colleague)
+                    item.Notify(message);  
+            }
         }
-        internal override void Send(string message)
+
+        internal override void SendTo(string message, Colleague colleague)
         {
-            mediator.Send(message, this);
-        }
-        internal override void Notify(string message)
-        {
-            Console.WriteLine($"同事1得到訊息:{message}");
+            Colleague targetColleague = GetColleague(colleague);
+            targetColleague?.Notify(message);    
         }
     }
 
-    internal class ConcreteColleague2 : Colleague
+    internal class Programmer : Colleague
     {
-        internal ConcreteColleague2(Mediator mediator) : base(mediator)
+        public Programmer(Mediator mediator, string identifier) : base(mediator, identifier)
         {
         }
-        internal override void Send(string message)
-        {
-            mediator.Send(message, this);
-        }
+
         internal override void Notify(string message)
         {
-            Console.WriteLine($"同事2得到訊息:{message}");
+            Console.WriteLine($"前端收到:{message}");
         }
     }
 
-    internal class ConcreteMediator : Mediator
+    internal class Art : Colleague
     {
-        internal ConcreteColleague1 Colleague1 { get; set; }
-        internal ConcreteColleague2 Colleague2 { get; set; }
-        internal override void Send(string message, Colleague colleague)
+        public Art(Mediator mediator, string identifier) : base(mediator, identifier)
         {
-            if (Colleague1 == colleague)
-            {
-                Colleague2.Notify(message);
-            }
-            else
-            {
-                Colleague1.Notify(message);
-            }
+        }
+
+        internal override void Notify(string message)
+        {
+            Console.WriteLine($"美術收到:{message}");
         }
     }
 }

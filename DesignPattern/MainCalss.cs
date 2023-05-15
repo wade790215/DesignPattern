@@ -125,8 +125,13 @@ namespace DesignPattern
             #endregion
 
             #region 中介者模式
-            MediatorPattern mediatorPattern = new MediatorPattern();
-            mediatorPattern.Main();
+            //MediatorPattern mediatorPattern = new MediatorPattern();
+            //mediatorPattern.Main();
+            #endregion
+
+            #region 享元模式
+            FlyweightPattern flyweightPattern = new FlyweightPattern();
+            flyweightPattern.Main();
             #endregion
         }
     }
