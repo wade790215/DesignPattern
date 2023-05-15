@@ -135,8 +135,13 @@ namespace DesignPattern
             #endregion
 
             #region 訪問者模式
-            VisitorPattern visitorPattern = new VisitorPattern();
-            visitorPattern.Main();
+            //VisitorPattern visitorPattern = new VisitorPattern();
+            //visitorPattern.Main();
+            #endregion
+
+            #region 自我驗收
+            SelfAcceptance selfAcceptance = new SelfAcceptance();
+            selfAcceptance.Main();
             #endregion
         }
     }

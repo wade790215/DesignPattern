@@ -64,12 +64,12 @@
     <Compile Include="Empolyee\HighClass\HighClass.cs" />
     <Compile Include="Empolyee\HumanResources.cs" />
     <Compile Include="Empolyee\HumanResourcesManagementSystem.cs" />
-    <Compile Include="Ability\ISkill.cs" />
+    <Compile Include="Company\Ability\ISkill.cs" />
     <Compile Include="Empolyee\Planner\JuniorPlanner.cs" />
     <Compile Include="Empolyee\Planner\SeniorPlanner.cs" />
     <Compile Include="FacadePattern\FacadePattern.cs" />
     <Compile Include="FactoryMethodPattern\FactoryMethodPattern.cs" />
-    <Compile Include="FlyweightPattern.cs" />
+    <Compile Include="FlyweightPattern\FlyweightPattern.cs" />
     <Compile Include="LSP\LSP.cs" />
     <Compile Include="MainCalss.cs" />
     <Compile Include="Empolyee\FrontEndEngineer\FrontEndEngineer.cs" />
@@ -77,20 +77,22 @@
     <Compile Include="Empolyee\Planner\Planner.cs" />
     <Compile Include="Empolyee\YunheEmpolyee.cs" />
     <Compile Include="Company\YunheCompany.cs" />
-    <Compile Include="MediatorPattern.cs" />
+    <Compile Include="MediatorPattern\MediatorPattern.cs" />
     <Compile Include="MementoPattern\MementoPattern.cs" />
     <Compile Include="ObseverPattern\ObserverPattern.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PrototypePattern\PrototypePattern.cs" />
     <Compile Include="ProxyPattern\IDelivery.cs" />
     <Compile Include="ProxyPattern\ProxyPattern.cs" />
+    <Compile Include="SelfAcceptance.cs" />
     <Compile Include="StatePattern\StatePattern.cs" />
     <Compile Include="Strategy\StrategyPattern.cs" />
     <Compile Include="TemplateMethodPattern\TemplateMethodPattern.cs" />
-    <Compile Include="VisitorPattern.cs" />
+    <Compile Include="VisitorPattern\VisitorPattern.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="ClassDiagram1.cd" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

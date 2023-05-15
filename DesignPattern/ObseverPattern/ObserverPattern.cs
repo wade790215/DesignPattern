@@ -1,10 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Xml.Linq;
-using static DesignPattern.ObserverPattern;
 
 namespace DesignPattern
 {
+    //這個很常用在開發，當狀態改變、達到目標、輸入事件...等等，會通知到訂閱者
+    //好處:降低耦合訂閱者不知道誰在觀察他，只知道收到通知執行對應的行為
     public class ObserverPattern
     {
         public void Main()
@@ -179,6 +178,18 @@ namespace DesignPattern
         //    }
         //    public abstract void Update();
         //}
+
+        //public interface ISubject
+        //{
+        //    void Attach(Engineer engineer);
+
+        //    void Detach(Engineer engineer);
+
+        //    void NotifyAllEngineers();
+
+        //    string Action { get; set; }
+        //}
+        
         #endregion
 
         #region 觀察者要處理不同事件時的版本
@@ -224,23 +235,12 @@ namespace DesignPattern
             }
         }
         #endregion
-    }
 
-    //public interface ISubject
-    //{
-    //    void Attach(Engineer engineer);
+        public interface INotify
+        {
+            void Notify();
 
-    //    void Detach(Engineer engineer);
-
-    //    void NotifyAllEngineers();
-
-    //    string Action { get; set; }
-    //}
-
-    public interface INotify
-    {
-        void Notify();
-
-        string Action { get; set; }
+            string Action { get; set; }
+        }
     }
 }
