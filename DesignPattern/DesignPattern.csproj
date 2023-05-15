@@ -69,6 +69,7 @@
     <Compile Include="Empolyee\Planner\SeniorPlanner.cs" />
     <Compile Include="FacadePattern\FacadePattern.cs" />
     <Compile Include="FactoryMethodPattern\FactoryMethodPattern.cs" />
+    <Compile Include="FlyweightPattern.cs" />
     <Compile Include="LSP\LSP.cs" />
     <Compile Include="MainCalss.cs" />
     <Compile Include="Empolyee\FrontEndEngineer\FrontEndEngineer.cs" />
