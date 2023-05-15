@@ -87,6 +87,7 @@
     <Compile Include="StatePattern\StatePattern.cs" />
     <Compile Include="Strategy\StrategyPattern.cs" />
     <Compile Include="TemplateMethodPattern\TemplateMethodPattern.cs" />
+    <Compile Include="VisitorPattern.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

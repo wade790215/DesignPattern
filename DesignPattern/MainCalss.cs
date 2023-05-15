@@ -130,8 +130,13 @@ namespace DesignPattern
             #endregion
 
             #region 享元模式
-            FlyweightPattern flyweightPattern = new FlyweightPattern();
-            flyweightPattern.Main();
+            //FlyweightPattern flyweightPattern = new FlyweightPattern();
+            //flyweightPattern.Main();
+            #endregion
+
+            #region 訪問者模式
+            VisitorPattern visitorPattern = new VisitorPattern();
+            visitorPattern.Main();
             #endregion
         }
     }
