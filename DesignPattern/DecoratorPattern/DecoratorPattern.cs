@@ -8,6 +8,8 @@ namespace DesignPattern
 {
     internal class DecoratorPattern
     {
+        //被裝飾者可以靈活的增加或刪除功能
+        //不需修改代碼就可以增加功能
         public void Main()
         {
             IComponent gameobject = new GameObject();

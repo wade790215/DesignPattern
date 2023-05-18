@@ -13,10 +13,12 @@ namespace DesignPattern
             CharacterBuilder enemyBuilder = new CharacterBuilder();
             CharacterParameter playerParameter = new CharacterParameter() { Health = 100, Attack = 15, Defense = 5, Speed = 3 };
             CharacterParameter enemyParameter = new CharacterParameter() { Health = 10, Attack = 2, Defense = 1, Speed = 1 };
-
+            CharacterPropUI propUI = new CharacterPropUI();
 
             Character player = characterDirector.CreateCharacter(playerBuilder, playerParameter);
             Character enemy = characterDirector.CreateCharacter(enemyBuilder, enemyParameter);
+            
+            player.updateProp += propUI.ShowProp;
 
             ICharacterSkill fireBall = new FireBall();
             ICharacterSkill clash = new Clash();
@@ -27,16 +29,11 @@ namespace DesignPattern
             player.UseSkill(clash);
 
             player.LearnSkill(fireBall);
+            //player.ForgetSkill(fireBall);
             player.UseSkill(fireBall);
 
             player.Equip<Helmet>();
             player.Equip<Shoes>();
-
-            Console.WriteLine(player.Defense);
-            Console.WriteLine(player.Speed);
-
-            player.Unequip<Helmet>();
-            Console.WriteLine(player.Defense);
         }
     }
 
@@ -61,7 +58,7 @@ namespace DesignPattern
         public int Speed { get; set; }
     }
 
-    public class Character:IUpdateCharacterProp
+    public class Character : IUpdateCharacterProp
     {
         public Character()
         {
@@ -73,6 +70,8 @@ namespace DesignPattern
         public int Attack { get; set; }
         public int Defense { get; set; }
         public int Speed { get; set; }
+
+        public Action<Character> updateProp;
 
         private List<ICharacterSkill> characterSkills;
 
@@ -86,6 +85,7 @@ namespace DesignPattern
             {
                 item.Equip(this);
                 equipments.Add(item);
+                UpdateProp(this);
             }
         }
 
@@ -96,6 +96,7 @@ namespace DesignPattern
             {
                 item.UnEquip(this);
                 equipments.Remove(item);
+                UpdateProp(this);
             }
         }
 
@@ -124,7 +125,7 @@ namespace DesignPattern
             }
             else
             {
-                Console.WriteLine($"還沒學會這個技能");
+                Console.WriteLine($"還沒學會這個技能\n");
             }
         }
 
@@ -150,7 +151,7 @@ namespace DesignPattern
 
         public void UpdateProp(Character character)
         {
-            throw new NotImplementedException();
+            updateProp?.Invoke(character);
         }
     }
 
@@ -250,5 +251,14 @@ namespace DesignPattern
     public interface IUpdateCharacterProp
     {
         void UpdateProp(Character character);
+    }
+
+    public class CharacterPropUI
+    {
+        public void ShowProp(Character character)   
+        {
+            Console.WriteLine($"數值發生改變\n血量:{character.Health}\n攻擊力:{character.Attack}\n防禦力:{character.Defense}" +
+                $"\n速度:{character.Speed}\n");
+        }
     }
 }

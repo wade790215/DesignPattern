@@ -29,11 +29,6 @@ namespace DesignPattern
             //projectManagement.AssignWork(frontEndEngineersSenior, typeof(Debug), eoTask);
             #endregion
 
-            #region 策略模式
-            //StrategyPattern strategyPattern = new StrategyPattern();
-            //strategyPattern.Main();
-            #endregion
-
             #region 依賴反轉
             //DIP dip = new DIP();
             //dip.Main();
@@ -42,6 +37,11 @@ namespace DesignPattern
             #region 李氏替換
             //LSP lsp = new LSP();
             //lsp.Main();
+            #endregion
+
+            #region 策略模式
+            //StrategyPattern strategyPattern = new StrategyPattern();
+            //strategyPattern.Main();
             #endregion
 
             #region 裝飾者模式
@@ -55,8 +55,8 @@ namespace DesignPattern
             #endregion
 
             #region 原型模式
-            //PrototypePattern prototypePattern = new PrototypePattern();
-            //prototypePattern.Main();
+            PrototypePattern prototypePattern = new PrototypePattern();
+            prototypePattern.Main();
             #endregion
 
             #region 模板方法模式
@@ -140,8 +140,8 @@ namespace DesignPattern
             #endregion
 
             #region 自我驗收
-            SelfAcceptance selfAcceptance = new SelfAcceptance();
-            selfAcceptance.Main();
+            //SelfAcceptance selfAcceptance = new SelfAcceptance();
+            //selfAcceptance.Main();
             #endregion
         }
     }

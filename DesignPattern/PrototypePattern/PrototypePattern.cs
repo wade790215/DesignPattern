@@ -24,7 +24,6 @@ namespace DesignPattern
             public string Name { get; set; }
             public int Age { get; set; }
 
-            //淺複製無法複製引用類型裡面的內容，需要再多做Clone
             public Address address;
 
             public Person(string name, int age, Address address)
@@ -39,9 +38,10 @@ namespace DesignPattern
                 Console.WriteLine($"Name:{Name},Age:{Age},Address:{address.City}-{address.Street}");
             }
 
+            //淺複製無法複製引用類型裡面的內容，需要再多做Clone
             public object Clone()
             {
-                return new Person(Name, Age, (Address)address.Clone());
+                return new Person(Name, Age, /*address*/(Address)address.Clone());
             }
         }
 

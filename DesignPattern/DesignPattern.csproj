@@ -82,7 +82,6 @@
     <Compile Include="ObseverPattern\ObserverPattern.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PrototypePattern\PrototypePattern.cs" />
-    <Compile Include="ProxyPattern\IDelivery.cs" />
     <Compile Include="ProxyPattern\ProxyPattern.cs" />
     <Compile Include="SelfAcceptance.cs" />
     <Compile Include="StatePattern\StatePattern.cs" />

@@ -8,6 +8,8 @@ using System.Threading.Tasks;
 
 namespace DesignPattern
 {
+    //透過代理人來轉送資訊，將Sender封裝
+    
     internal class ProxyPattern
     {
         public void Main()
@@ -58,5 +60,10 @@ namespace DesignPattern
     public class Receiver
     {
         public string Name { get; set; }
+    }
+
+    public interface IDelivery
+    {
+        void Delivery();
     }
 }

@@ -2,6 +2,8 @@
 
 namespace DesignPattern
 {
+    //當創造的對象有分成很多部分組成，並且順序也很重要
+    //當創造流程需要調整時彈性比較大
     internal class BuilderPattern
     {
         internal void Main()
