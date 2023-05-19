@@ -2,8 +2,8 @@
 
 namespace DesignPattern
 {
-    //當創造的對象有分成很多部分組成，並且順序也很重要
-    //當創造流程需要調整時彈性比較大
+    //當創造的對象有分成很多部分組成，且每個部分都有不同的實現時，可以使用建造者模式
+    //透過指揮者來組裝對象，可以透過不同的指揮者來組裝不同的對象
     internal class BuilderPattern
     {
         internal void Main()

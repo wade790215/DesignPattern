@@ -5,6 +5,7 @@ using System.Reflection;
 
 namespace DesignPattern
 {
+    //簡單工廠建立物件，利用反射來創建對應的物件，解決類別會過多的缺點
     internal class AbstractFactoryPattern
     {
         internal void Main()
@@ -18,19 +19,6 @@ namespace DesignPattern
     public class ProductFactory
     {
         private const string AssemblyName = "DesignPattern";
-
-        public IProduct CreateProduct(string type)
-        {
-            switch (type)
-            {
-                case "Drinks":
-                    return new Drinks();
-                case "Snack":
-                    return new Snack();
-                default:
-                    throw new Exception("No product found.");
-            }
-        }
 
         //反射+設定檔
         public IProduct CreateProduct()

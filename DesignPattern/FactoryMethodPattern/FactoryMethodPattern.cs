@@ -3,9 +3,10 @@ using System.Net.Http.Headers;
 
 namespace DesignPattern
 {
+    //若產品線越來越多，則需要新增很多的工廠類別，這樣會造成類別過多，且不易維護
     internal class FactoryMethodPattern
     {
-        private ProductType productType;
+        //private ProductType productType;
 
         internal void Main()
         {
@@ -80,6 +81,4 @@ namespace DesignPattern
             }
         }
     }
-
-    
 }

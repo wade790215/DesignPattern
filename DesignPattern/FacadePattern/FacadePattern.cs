@@ -4,6 +4,8 @@ namespace DesignPattern
 {
     internal class FacadePattern
     {
+        //將複雜的子系統封裝起來並簡化，只提供簡單的介面給客戶端使用
+        //避免客戶端在使用API時，需要了解太多細節
         internal void Main()
         {
             //最基本的寫法，需要知道內部的細節

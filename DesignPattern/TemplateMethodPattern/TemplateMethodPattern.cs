@@ -2,6 +2,8 @@
 
 namespace DesignPattern
 {
+    //模板方法模式通常會有個抽象的父類別並提供抽象方法或是已經實做好的算法必須照著做
+    //子類別可以覆寫父類別的方法，但是不能改變算法的流程
     internal class TemplateMethodPattern
     {
         internal void Main()

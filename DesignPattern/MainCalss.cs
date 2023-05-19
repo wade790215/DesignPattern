@@ -55,8 +55,8 @@ namespace DesignPattern
             #endregion
 
             #region 原型模式
-            PrototypePattern prototypePattern = new PrototypePattern();
-            prototypePattern.Main();
+            //PrototypePattern prototypePattern = new PrototypePattern();
+            //prototypePattern.Main();
             #endregion
 
             #region 模板方法模式
