@@ -15,6 +15,43 @@ namespace DesignPattern
             person.Eat();
             person.Breathe();
             person.Think(); 
+
+            IEmployee employee = new ArtTech();
+            employee.Work();
+            employee.Break();
+            Console.ReadLine();
+        }
+    }
+
+    public interface IEmployee
+    {
+        void Work();
+        void Break();   
+    }
+
+    public class RD : IEmployee
+    {
+        public void Break()
+        {
+            Console.WriteLine("Break");
+        }
+
+        public void Work()
+        {
+            Console.WriteLine("Work");
+        }
+    }
+
+    public class ArtTech: IEmployee
+    {
+        public void Break()
+        {
+            Console.WriteLine("Break");
+        }
+
+        public void Work()
+        {
+            Console.WriteLine("Work");
         }
     }
 

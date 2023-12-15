@@ -45,8 +45,8 @@ namespace DesignPattern
             #endregion
 
             #region 裝飾者模式
-            //DecoratorPattern decoratorPattern = new DecoratorPattern();
-            //decoratorPattern.Main();
+            DecoratorPattern decoratorPattern = new DecoratorPattern();
+            decoratorPattern.Main();
             #endregion
 
             #region 代理模式
@@ -137,11 +137,6 @@ namespace DesignPattern
             #region 訪問者模式
             //VisitorPattern visitorPattern = new VisitorPattern();
             //visitorPattern.Main();
-            #endregion
-
-            #region 自我驗收
-            //SelfAcceptance selfAcceptance = new SelfAcceptance();
-            //selfAcceptance.Main();
             #endregion
         }
     }
