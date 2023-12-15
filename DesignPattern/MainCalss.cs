@@ -122,6 +122,11 @@ namespace DesignPattern
             //VisitorPattern visitorPattern = new VisitorPattern();
             //visitorPattern.Main();
             #endregion
+
+            #region 單例模式
+            SingletonPattern singletonPattern = new SingletonPattern();
+            singletonPattern.Main();
+            #endregion
         }
     }
 }
