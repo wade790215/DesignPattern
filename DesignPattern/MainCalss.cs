@@ -24,8 +24,8 @@ namespace DesignPattern
             #endregion
 
             #region 策略模式
-            StrategyPattern strategyPattern = new StrategyPattern();
-            strategyPattern.Main();
+            //StrategyPattern strategyPattern = new StrategyPattern();
+            //strategyPattern.Main();
             #endregion
 
             #region 裝飾者模式
@@ -34,8 +34,8 @@ namespace DesignPattern
             #endregion
 
             #region 代理模式
-            //ProxyPattern proxyPattern = new ProxyPattern();
-            //proxyPattern.Main();
+            ProxyPattern proxyPattern = new ProxyPattern();
+            proxyPattern.Main();
             #endregion
 
             #region 原型模式
