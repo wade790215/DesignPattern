@@ -18,24 +18,141 @@ namespace DesignPattern
             //gameobject.AssemblyComponent();
             //Console.WriteLine(gameobject.GetDescription());
 
-            // 創建柯博文實例
-            ITransformerWeapon optimusPrime = new OptimusPrime();
-            Console.WriteLine("初始裝備：");
-            optimusPrime.EquipWeapon();
-            Console.WriteLine("-------------------");
+            //// 創建柯博文實例
+            //ITransformerWeapon optimusPrime = new OptimusPrime();
+            //Console.WriteLine("初始裝備：");
+            //optimusPrime.EquipWeapon();
+            //Console.WriteLine("-------------------");
 
-            // 使用槍砲裝飾柯博文
-            TransformerWeapon gunDecorator = new Gun();
-            gunDecorator.SetTransformerWeapon(optimusPrime);
+            //// 使用槍砲裝飾柯博文
+            //TransformerWeapon gunDecorator = new Gun();
+            //gunDecorator.SetTransformerWeapon(optimusPrime);
 
-            // 顯示裝飾後的裝備
-            Console.WriteLine("添加槍砲後的裝備：");
-            gunDecorator.EquipWeapon();
-            Console.WriteLine("-------------------");
+            //// 顯示裝飾後的裝備
+            //Console.WriteLine("添加槍砲後的裝備：");
+            //gunDecorator.EquipWeapon();
+            //Console.WriteLine("-------------------");
 
+            //Console.ReadLine();
+
+            Shape shape = new Shape();
+            IShapeComponent fillColor = new FillColor(shape);
+            IShapeComponent borderColor = new BorderColor(shape);
+            IShapeComponent shadowColor = new ShadowColor(shape);
+            fillColor.FillStyle();  
+            borderColor.BorderStyle();  
+            shadowColor.ShadowStyle();
             Console.ReadLine();
         }
     }
+
+    #region 練習2
+
+    public interface  IShapeComponent
+    {
+        void FillStyle();
+        void BorderStyle();
+        void ShadowStyle(); 
+    }
+
+    public class Shape: IShapeComponent
+    {
+        public void FillStyle()
+        {
+            Console.WriteLine("MyFillStyle:");
+        }
+
+        public void BorderStyle()
+        {
+            Console.WriteLine("MyBorderStyle:");
+        }
+
+        public void ShadowStyle()
+        {
+            Console.WriteLine("MyShadowStyle:");
+        }
+    }
+
+    public class ShapeDecorator : IShapeComponent
+    {
+        private IShapeComponent shapeComponent;
+
+        public ShapeDecorator(IShapeComponent shapeComponent)
+        {
+            this.shapeComponent = shapeComponent;
+        }
+
+        public virtual void FillStyle()
+        {
+            shapeComponent.FillStyle();
+        }
+
+        public virtual void BorderStyle()
+        {
+            shapeComponent.BorderStyle();
+        }
+
+        public virtual void ShadowStyle()
+        {
+            shapeComponent.ShadowStyle();
+        }
+    }
+
+    public class FillColor : ShapeDecorator
+    {
+        public FillColor(IShapeComponent shapeComponent) : base(shapeComponent)
+        {
+        }
+
+        public void AddFillStyle()
+        {
+            Console.WriteLine("Fill Red");
+        }   
+
+        public override void FillStyle()
+        {
+            base.FillStyle();
+            AddFillStyle();
+        }
+    }
+
+    public class BorderColor : ShapeDecorator
+    {
+        public BorderColor(IShapeComponent shapeComponent) : base(shapeComponent)
+        {
+        }
+
+        public void AddBorderStyle()
+        {
+            Console.WriteLine("Border Red");
+        }
+
+        public override void BorderStyle()
+        {
+            base.BorderStyle();
+            AddBorderStyle();
+        }
+    }
+
+    public class ShadowColor : ShapeDecorator
+    {
+        public ShadowColor(IShapeComponent shapeComponent) : base(shapeComponent)
+        {
+        }
+
+        public void AddShadowStyle()
+        {
+            Console.WriteLine("Shadow Red");
+        }
+
+        public override void ShadowStyle()
+        {
+            base.ShadowStyle();
+            AddShadowStyle();
+        }
+    }
+
+    #endregion
 
     #region 練習
 
