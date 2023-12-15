@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.InteropServices;
 
 namespace DesignPattern
 {
@@ -9,15 +8,73 @@ namespace DesignPattern
     {
         internal void Main()
         {
-            ShoppingCart shoppingCart = new ShoppingCart(new TwentyPercentOff());
+            //ShoppingCart shoppingCart = new ShoppingCart(new TwentyPercentOff());
+            //shoppingCart.AddProduct(new TShirt { Price = 1000 });
+            //shoppingCart.AddProduct(new Shoes { Price = 2000 });
+            //Console.WriteLine($"Total price is {shoppingCart.CalculateTotalPrice()}");
 
-            shoppingCart.AddProduct(new TShirt { Price = 1000 });
-            shoppingCart.AddProduct(new Shoes { Price = 2000 });
+            var factory = new ConcereteStrategyFactory();
+            IRouteStrategy routeStrtegy = factory.CreateStrategy();
 
-            Console.WriteLine($"Total price is {shoppingCart.CalculateTotalPrice()}");
+            var navigator = new Navigator();        
+            navigator.SetRouteStrategy(routeStrtegy);
+            navigator.BuildRoute();
+            Console.ReadLine();
         }
 
+        #region Pratice2
 
+        public interface IStrategyFactory
+        {
+            IRouteStrategy CreateStrategy();
+        }
+
+        public class ConcereteStrategyFactory : IStrategyFactory
+        {
+            public IRouteStrategy CreateStrategy()
+            {
+                return new CarRouteStrategy();
+            }
+        }
+
+        public interface IRouteStrategy
+        {
+            void BuildRoute();
+        }
+
+        public class Navigator
+        {
+            private IRouteStrategy routeStrategy;
+
+            public void SetRouteStrategy(IRouteStrategy routeStrategy)
+            {
+                this.routeStrategy = routeStrategy;
+            }
+
+            public void BuildRoute()
+            {
+                routeStrategy.BuildRoute();
+            }
+        }
+
+        public class CarRouteStrategy : IRouteStrategy
+        {
+            public void BuildRoute()
+            {
+                Console.WriteLine("Build route for car");
+            }
+        }
+
+        public class WalkRouteStrategy : IRouteStrategy
+        {
+            public void BuildRoute()
+            {
+                Console.WriteLine("Build route for walk");
+            }
+        }
+        #endregion
+
+        #region Pratice
         public class ShoppingCart
         {
             private List<IProduct> products = new List<IProduct>();
@@ -85,6 +142,7 @@ namespace DesignPattern
             string Name { get; }
             float Price { get; set; }
         }
+        #endregion
 
     }
 

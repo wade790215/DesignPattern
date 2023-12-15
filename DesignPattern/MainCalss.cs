@@ -24,8 +24,8 @@ namespace DesignPattern
             #endregion
 
             #region 策略模式
-            //StrategyPattern strategyPattern = new StrategyPattern();
-            //strategyPattern.Main();
+            StrategyPattern strategyPattern = new StrategyPattern();
+            strategyPattern.Main();
             #endregion
 
             #region 裝飾者模式
@@ -124,8 +124,8 @@ namespace DesignPattern
             #endregion
 
             #region 單例模式
-            SingletonPattern singletonPattern = new SingletonPattern();
-            singletonPattern.Main();
+            //SingletonPattern singletonPattern = new SingletonPattern();
+            //singletonPattern.Main();
             #endregion
         }
     }
