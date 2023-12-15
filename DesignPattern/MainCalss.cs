@@ -13,22 +13,6 @@ namespace DesignPattern
     {
         static void Main(string[] args)
         {
-            #region 允和公司
-            //YunheCompany yunheCompany = new YunheCompany();
-
-            //foreach (var frontEndEngineers in EmpolyeeInfoDatas.ApplyFrontEndEngineer())
-            //{
-            //    yunheCompany.HireStaff(frontEndEngineers);
-            //}
-
-            //List<YunheEmpolyee> frontEndEngineersSenior = yunheCompany.QueryEmployees(Position.FrontEndEngineer, Seniority.Senior);
-
-            //var projectManagement = new ProjectManagement();
-            //var eoTask = new EOTask();
-
-            //projectManagement.AssignWork(frontEndEngineersSenior, typeof(Debug), eoTask);
-            #endregion
-
             #region 依賴反轉
             //DIP dip = new DIP();
             //dip.Main();
@@ -45,8 +29,8 @@ namespace DesignPattern
             #endregion
 
             #region 裝飾者模式
-            DecoratorPattern decoratorPattern = new DecoratorPattern();
-            decoratorPattern.Main();
+            //DecoratorPattern decoratorPattern = new DecoratorPattern();
+            //decoratorPattern.Main();
             #endregion
 
             #region 代理模式
