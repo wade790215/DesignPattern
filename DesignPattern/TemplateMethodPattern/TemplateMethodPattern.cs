@@ -8,16 +8,74 @@ namespace DesignPattern
     {
         internal void Main()
         {
-            WorkLog jackChang = new JackChang();
-            jackChang.WriteWrokLog();
+            //WorkLog jackChang = new JackChang();
+            //jackChang.WriteWrokLog();
 
-            WorkLog boQian = new BoQian();
-            boQian.WriteWrokLog();
+            //WorkLog boQian = new BoQian();
+            //boQian.WriteWrokLog();
 
-            WorkLog yuDer = new YuDer();
-            yuDer.WriteWrokLog();
+            //WorkLog yuDer = new YuDer();
+            //yuDer.WriteWrokLog();
+
+            DataAnalyzer finacialDataAnalyzer = new FinacialDataAnalyzer();
+            finacialDataAnalyzer.ProcessData();
+
+            DataAnalyzer salesDataAnalyzer = new SalesDataAnalyzer();
+            salesDataAnalyzer.ProcessData();
         }
 
+        #region Pratice1
+
+        public abstract class DataAnalyzer 
+        {
+            public void ProcessData()
+            {
+                LoadData();
+                AnalyzeData();
+                CleanData();
+                GenerateReport();
+            }
+
+            protected virtual void LoadData()
+            {
+                Console.WriteLine("Load data from database.");
+            }
+
+            protected virtual void AnalyzeData()
+            {
+                Console.WriteLine("Analyze data.");
+            }
+
+            protected virtual void CleanData()
+            {
+                Console.WriteLine("Clean data.");
+            }   
+
+            protected virtual void GenerateReport()
+            {
+                Console.WriteLine("Generate report.");
+            }   
+        }
+
+        public class  FinacialDataAnalyzer:DataAnalyzer
+        {
+            protected override void AnalyzeData()
+            {
+                Console.WriteLine("Analyze finace data.");
+            }
+        }
+
+        public class SalesDataAnalyzer : DataAnalyzer
+        {
+            protected override void AnalyzeData()
+            {
+                Console.WriteLine("Analyze sales data.");
+            }
+        }
+
+        #endregion
+
+        #region Pratice2
         public abstract class WorkLog
         {
             public void WriteWrokLog()
@@ -73,5 +131,6 @@ namespace DesignPattern
                 Console.WriteLine("補休-身體不適");
             }
         }
+        #endregion
     }
 }

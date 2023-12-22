@@ -34,8 +34,8 @@ namespace DesignPattern
             #endregion
 
             #region 代理模式
-            ProxyPattern proxyPattern = new ProxyPattern();
-            proxyPattern.Main();
+            //ProxyPattern proxyPattern = new ProxyPattern();
+            //proxyPattern.Main();
             #endregion
 
             #region 原型模式
@@ -44,8 +44,8 @@ namespace DesignPattern
             #endregion
 
             #region 模板方法模式
-            //TemplateMethodPattern templateMethodPattern = new TemplateMethodPattern();
-            //templateMethodPattern.Main();
+            TemplateMethodPattern templateMethodPattern = new TemplateMethodPattern();
+            templateMethodPattern.Main();
             #endregion
 
             #region 外觀模式

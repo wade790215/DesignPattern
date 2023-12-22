@@ -8,8 +8,6 @@ using System.Threading.Tasks;
 
 namespace DesignPattern
 {
-    //透過代理人來轉送資訊，將Sender封裝
-
     internal class ProxyPattern
     {
         public void Main()
