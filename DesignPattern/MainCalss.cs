@@ -44,13 +44,13 @@ namespace DesignPattern
             #endregion
 
             #region 模板方法模式
-            TemplateMethodPattern templateMethodPattern = new TemplateMethodPattern();
-            templateMethodPattern.Main();
+            //TemplateMethodPattern templateMethodPattern = new TemplateMethodPattern();
+            //templateMethodPattern.Main();
             #endregion
 
             #region 外觀模式
-            //FacadePattern facadePattern = new FacadePattern();
-            //facadePattern.Main();
+            FacadePattern facadePattern = new FacadePattern();
+            facadePattern.Main();
             #endregion
 
             #region 建造者模式

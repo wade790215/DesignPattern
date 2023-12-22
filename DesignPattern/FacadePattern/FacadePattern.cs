@@ -18,11 +18,16 @@ namespace DesignPattern
             //computer.Disk.Run();
 
             //使用外觀模式，只需要知道外觀類的方法
-            var computer = new Computer();
-            computer.Run();
+            //var computer = new Computer();
+            //computer.Run();
+
+            HomeTheateFacade homeTheateFacade = new HomeTheateFacade();
+            homeTheateFacade.WatchMovie();
+
+            Console.ReadLine(); 
         }
     }
-
+    #region Pratice1
     internal class Computer
     {
         private CPU cpu;
@@ -78,4 +83,101 @@ namespace DesignPattern
             Console.WriteLine($"CPU is ready.");
         }
     }
+    #endregion
+
+    #region Pratice2
+
+    public interface IDeviceFunction
+    {
+        void On();  
+        void Off(); 
+        void Play();
+    }
+
+    public class HomeTheateFacade
+    {
+        private IDeviceFunction projector;
+        private IDeviceFunction surroundSoundSystem;
+        private IDeviceFunction bdPlayer;
+
+        public HomeTheateFacade()
+        {
+            projector = new Projector();
+            surroundSoundSystem = new SurroundSoundSystem();
+            bdPlayer = new BDPlayer();
+        }
+
+        public void WatchMovie()
+        {
+            projector.On(); 
+            surroundSoundSystem.On();
+            bdPlayer.On();
+            projector.Play();
+            surroundSoundSystem.Play();
+            bdPlayer.Play();
+        }
+
+        public void EndMovie()
+        {
+            projector.Off();
+            surroundSoundSystem.Off();
+            bdPlayer.Off();
+        }
+    }
+
+    public class Projector : IDeviceFunction
+    {
+        public void On()
+        {
+            Console.WriteLine("Projector on.");
+        }
+
+        public void Off()
+        {
+            Console.WriteLine("Projector off.");
+        }
+
+        public void Play()
+        {
+            Console.WriteLine("Projector play.");
+        }
+    }
+
+    public class SurroundSoundSystem : IDeviceFunction
+    {
+        public void On()
+        {
+            Console.WriteLine("SurroundSoundSystem on.");
+        }
+
+        public void Off()
+        {
+            Console.WriteLine("SurroundSoundSystem off.");
+        }
+
+        public void Play()
+        {
+            Console.WriteLine("SurroundSoundSystem play.");
+        }
+    }
+
+    public class BDPlayer : IDeviceFunction
+    {
+        public void On()
+        {
+            Console.WriteLine("BDPlayer on.");
+        }
+
+        public void Off()
+        {
+            Console.WriteLine("BDPlayer off.");
+        }
+
+        public void Play()
+        {
+            Console.WriteLine("BDPlayer play.");
+        }
+    }
+
+    #endregion
 }
