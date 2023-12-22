@@ -49,13 +49,13 @@ namespace DesignPattern
             #endregion
 
             #region 外觀模式
-            FacadePattern facadePattern = new FacadePattern();
-            facadePattern.Main();
+            //FacadePattern facadePattern = new FacadePattern();
+            //facadePattern.Main();
             #endregion
 
             #region 建造者模式
-            //BuilderPattern builderPattern = new BuilderPattern();
-            //builderPattern.Main();
+            BuilderPattern builderPattern = new BuilderPattern();
+            builderPattern.Main();
             #endregion
 
             #region 觀察者模式

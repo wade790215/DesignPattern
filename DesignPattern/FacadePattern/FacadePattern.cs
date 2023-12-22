@@ -28,61 +28,61 @@ namespace DesignPattern
         }
     }
     #region Pratice1
-    internal class Computer
-    {
-        private CPU cpu;
-        private Memory memory;
-        private Disk disk;
+    //internal class Computer
+    //{
+    //    private CPU cpu;
+    //    private Memory memory;
+    //    private Disk disk;
 
-        public Computer()
-        {
-            cpu = new CPU();
-            memory = new Memory();
-            disk = new Disk();
-        }
-        public void Run()
-        {
-            cpu.Run();
-            memory.Run();
-            disk.Run();
-        }
-    }
+    //    public Computer()
+    //    {
+    //        cpu = new CPU();
+    //        memory = new Memory();
+    //        disk = new Disk();
+    //    }
+    //    public void Run()
+    //    {
+    //        cpu.Run();
+    //        memory.Run();
+    //        disk.Run();
+    //    }
+    //}
 
-    internal class Disk
-    {
-        public Disk()
-        {
-        }
+    //internal class Disk
+    //{
+    //    public Disk()
+    //    {
+    //    }
 
-        internal void Run()
-        {
-            Console.WriteLine($"Disk is ready.");
-        }
-    }
+    //    internal void Run()
+    //    {
+    //        Console.WriteLine($"Disk is ready.");
+    //    }
+    //}
 
-    internal class Memory
-    {
-        public Memory()
-        {
-        }
+    //internal class Memory
+    //{
+    //    public Memory()
+    //    {
+    //    }
 
-        internal void Run()
-        {
-            Console.WriteLine($"Memory is ready.");
-        }
-    }
+    //    internal void Run()
+    //    {
+    //        Console.WriteLine($"Memory is ready.");
+    //    }
+    //}
 
-    internal class CPU
-    {
-        public CPU()
-        {
-        }
+    //internal class CPU
+    //{
+    //    public CPU()
+    //    {
+    //    }
 
-        internal void Run()
-        {
-            Console.WriteLine($"CPU is ready.");
-        }
-    }
+    //    internal void Run()
+    //    {
+    //        Console.WriteLine($"CPU is ready.");
+    //    }
+    //}
     #endregion
 
     #region Pratice2
