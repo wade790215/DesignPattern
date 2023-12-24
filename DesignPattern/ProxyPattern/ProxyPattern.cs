@@ -29,6 +29,7 @@ namespace DesignPattern
         void ReadFile();
     }   
 
+    //代理的對象
     public class RealFileReader : IFileReader
     {
         public void ReadFile()
@@ -37,6 +38,9 @@ namespace DesignPattern
         }
     }
 
+    //代理人，對RealFileReader進行封裝
+    //代理人可以做一些額外的事情，例如檢查權限、紀錄log
+    //代理人可以對RealFileReader進行控制，例如限制存取次數
     public class FileReaderProxy : IFileReader
     {
         private IFileReader fileReader;
@@ -64,11 +68,13 @@ namespace DesignPattern
         }
     }
 
+    //客戶端
+    //透過代理人來存取檔案
     public class Client
     {
         public void Read()
         {
-            IFileReader fileReader = new FileReaderProxy(new RealFileReader());
+            FileReaderProxy fileReader = new FileReaderProxy(new RealFileReader());
             fileReader.ReadFile();
         }
     }
