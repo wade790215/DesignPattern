@@ -54,8 +54,8 @@ namespace DesignPattern
             #endregion
 
             #region 建造者模式
-            BuilderPattern builderPattern = new BuilderPattern();
-            builderPattern.Main();
+            //BuilderPattern builderPattern = new BuilderPattern();
+            //builderPattern.Main();
             #endregion
 
             #region 觀察者模式
