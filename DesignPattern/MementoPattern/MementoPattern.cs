@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace DesignPattern
 {
@@ -6,20 +8,102 @@ namespace DesignPattern
     {
         internal void Main()
         {
-            //存檔
-            var player = new Player();
-            var gameSaveManagement = new GameSaveManagement();
-            gameSaveManagement.Memento = player.SaveState();
-            player.ShowState(); 
+            ////存檔
+            //var player = new Player();
+            //var gameSaveManagement = new GameSaveManagement();
+            //gameSaveManagement.Memento = player.SaveState();
+            //player.ShowState(); 
 
-            //打Boss
-            player.AttackBoss();
+            ////打Boss
+            //player.AttackBoss();
 
-            //讀檔
-            player.RestoreState(gameSaveManagement.Memento);
+            ////讀檔
+            //player.RestoreState(gameSaveManagement.Memento);
+
+            History history = new History();
+            TextEditor textEditor = new TextEditor();
+            textEditor.SetText("Hello World");
+            var hello = textEditor.CreateState();
+            history.Push(hello); 
+
+            textEditor.SetText("Test");
+            var test = textEditor.CreateState();
+            history.Push(test);
+
+            textEditor.SetText("Test2");
+            var test2 = textEditor.CreateState();
+            history.Push(test2);
+
+            Console.WriteLine(history.Pop().GetText());
+            Console.WriteLine(history.Pop().GetText());
+            Console.WriteLine(history.Pop().GetText());
+            Console.ReadLine(); 
         }
     }
 
+    #region Pratice2
+
+    public class TextEditor
+    {
+        private string text;
+
+        public void SetText(string text)
+        {
+            this.text = text;
+        }
+        public string GetText()
+        {
+            return text;
+        }
+
+        public EditorState CreateState()
+        {
+            return new EditorState(text);
+        }
+
+        public void RestoreState(EditorState state)
+        {
+            text = state.GetText();
+        }
+    }
+
+    public class EditorState
+    {
+        private string text;
+
+        public EditorState(string text)
+        {
+            this.text = text;
+        }
+
+        public string GetText()
+        {
+            return text;
+        }
+    }
+
+    public class History
+    {
+        private Stack<EditorState> states = new Stack<EditorState>();
+
+        public void Push(EditorState state)
+        {
+            states.Push(state);
+        }
+
+        public EditorState Pop()
+        {
+            if (states.Count > 0)
+            {
+                return states.Pop();
+            }
+            return null;
+        }
+    }
+
+    #endregion
+
+    #region Practice1
     internal class GameSaveManagement
     {
         private PlayerStateMemento memento;
@@ -83,4 +167,5 @@ namespace DesignPattern
             Console.WriteLine($"目前攻擊力{atk}，防禦力{def}，血量{hp}");
         }
     }
+    #endregion
 }
