@@ -6,11 +6,16 @@ namespace DesignPattern
     {
         internal void Main()
         {
-            ITarget target = new Adapter();
-            target.Request();
+            //ITarget target = new Adapter();
+            //target.Request();
+
+            VectorGraphicAdapter vectorGraphicAdapter = new VectorGraphicAdapter(new VectorGraphic());
+            vectorGraphicAdapter.Render();
+            Console.ReadLine(); 
         }
     }
 
+    #region Practice1
     public class Adaptee
     {
         public void SpecificRequest()
@@ -38,4 +43,38 @@ namespace DesignPattern
             adaptee.SpecificRequest(); 
         }
     }
+
+    #endregion
+
+    #region Practice2
+
+    public interface IGraphicRenderer
+    {
+        void Render();
+    }
+
+    public class VectorGraphicAdapter : IGraphicRenderer
+    {
+        private VectorGraphic vectorGraphic;
+
+        public VectorGraphicAdapter(VectorGraphic vectorGraphic)
+        {
+            this.vectorGraphic = vectorGraphic;
+        }
+
+        public void Render()
+        {
+            vectorGraphic.ThirtPatyRender();    
+        }
+    }
+
+    public class VectorGraphic
+    {
+        public void ThirtPatyRender()
+        {
+            Console.WriteLine("ThirtPatyRender");
+        }
+    }
+
+    #endregion
 }

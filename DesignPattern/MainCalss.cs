@@ -79,8 +79,8 @@ namespace DesignPattern
             #endregion
 
             #region 轉接器模式
-            //AdapterPattern adapterPattern = new AdapterPattern();
-            //adapterPattern.Main();
+            AdapterPattern adapterPattern = new AdapterPattern();
+            adapterPattern.Main();
             #endregion
 
             #region 備忘錄模式
