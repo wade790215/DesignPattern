@@ -24,25 +24,30 @@ namespace DesignPattern
             TextEditor textEditor = new TextEditor();
             textEditor.SetText("Hello World");
             var hello = textEditor.CreateState();
-            history.Push(hello); 
-
+            history.Push(hello);
+            Console.WriteLine(textEditor.GetText());
             textEditor.SetText("Test");
             var test = textEditor.CreateState();
             history.Push(test);
-
+            Console.WriteLine(textEditor.GetText());
             textEditor.SetText("Test2");
             var test2 = textEditor.CreateState();
             history.Push(test2);
+            Console.WriteLine(textEditor.GetText());
 
-            Console.WriteLine(history.Pop().GetText());
-            Console.WriteLine(history.Pop().GetText());
-            Console.WriteLine(history.Pop().GetText());
+            textEditor.RestoreState(history.Pop());  
+            textEditor.RestoreState(history.Pop());  
+            textEditor.RestoreState(history.Pop());
+            Console.WriteLine(textEditor.GetText());
             Console.ReadLine(); 
         }
     }
 
     #region Pratice2
 
+    //管理者不與發起者直接溝通，避免發起者直接存取管理者
+
+    //發起者(Originator) 負責儲存狀態
     public class TextEditor
     {
         private string text;
@@ -67,6 +72,7 @@ namespace DesignPattern
         }
     }
 
+    //備忘錄(Memento) 負責儲存狀態，僅提供給發起者存取
     public class EditorState
     {
         private string text;
@@ -82,6 +88,7 @@ namespace DesignPattern
         }
     }
 
+    //管理者(Caretaker) 只負責管理狀態並提供狀態恢復功能
     public class History
     {
         private Stack<EditorState> states = new Stack<EditorState>();
