@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using static DesignPattern.CompositePattern;
 
 namespace DesignPattern
 {
@@ -9,37 +8,97 @@ namespace DesignPattern
     {
         internal void Main()
         {
-            //建立一個根節點
-            var root = new Composite("root");
+            ////建立一個根節點
+            //var root = new Composite("root");
 
-            //建立一個分支
-            var branch1 = new Composite("branch1");
-            var branch2 = new Composite("branch2");
+            ////建立一個分支
+            //var branch1 = new Composite("branch1");
+            //var branch2 = new Composite("branch2");
 
-            //建立一個葉節點
-            var leaf1 = new Leaf("leaf1");
-            var leaf2 = new Leaf("leaf2");
-            var leaf3 = new Leaf("leaf3");
+            ////建立一個葉節點
+            //var leaf1 = new Leaf("leaf1");
+            //var leaf2 = new Leaf("leaf2");
+            //var leaf3 = new Leaf("leaf3");
 
-            //將葉節點加入分支
-            branch1.Add(leaf1);
-            branch1.Add(leaf3);
-            branch2.Add(leaf2);
+            ////將葉節點加入分支
+            //branch1.Add(leaf1);
+            //branch1.Add(leaf3);
+            //branch2.Add(leaf2);
 
-            //將分支加入根節點
-            root.Add(branch1);
-            root.Add(branch2);
+            ////將分支加入根節點
+            //root.Add(branch1);
+            //root.Add(branch2);
 
-            //顯示結構
-            root.Display(1);
+            ////顯示結構
+            //root.Display(1);
 
-            Console.WriteLine("Node Information:");
-            //Console.WriteLine(root.GetNodeInfo());
-            //Console.WriteLine(branch1.GetNodeInfo());
-            Console.WriteLine(branch1.GetAllNodeInfo());
-            //Console.WriteLine(leaf1.GetNodeInfo());
+            //Console.WriteLine("Node Information:");
+            ////Console.WriteLine(root.GetNodeInfo());
+            ////Console.WriteLine(branch1.GetNodeInfo());
+            //Console.WriteLine(branch1.GetAllNodeInfo());
+            ////Console.WriteLine(leaf1.GetNodeInfo());
+            //Console.ReadLine();
+
+            Directory root = new Directory();
+            File file1 = new File(1);   
+            File file2 = new File(2);   
+            root.AddNode(file1);    
+            root.AddNode(file2);
+
+            Console.WriteLine(root.GetSize());
+            Console.ReadLine();
         }
 
+        #region Pratice 2
+
+        public interface FileSystemNode
+        {
+            int GetSize();
+        }
+
+        public class Directory : FileSystemNode
+        {
+            private List<FileSystemNode> nodes = new List<FileSystemNode>();
+
+            public void AddNode(FileSystemNode node)
+            {
+                nodes.Add(node);
+            }
+
+            public void RemoveNode(FileSystemNode node)
+            {
+                nodes.Remove(node);
+            }
+
+            public int GetSize()
+            {
+                int result = 0; 
+                foreach (var node in nodes)
+                {
+                    result += node.GetSize();
+                }
+                return result;
+            }
+        }
+
+        public class File : FileSystemNode
+        {
+            private int size;
+
+            public File(int size)
+            {
+                this.size = size;
+            }
+
+            public int GetSize()
+            {
+                return size;
+            }
+        }
+
+        #endregion
+
+        #region Pratice 1
         public abstract class Component
         {
             protected string name;
@@ -134,5 +193,6 @@ namespace DesignPattern
                 return sb.ToString();
             }
         }
+        #endregion
     }
 }
