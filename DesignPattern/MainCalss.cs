@@ -89,8 +89,8 @@ namespace DesignPattern
             #endregion
 
             #region 組合模式
-            CompositePattern compositePattern = new CompositePattern();
-            compositePattern.Main();
+            //ompositePattern compositePattern = new CompositePattern();
+            //compositePattern.Main();
             #endregion
 
             #region 合成聚合復合模式
@@ -99,8 +99,8 @@ namespace DesignPattern
             #endregion
 
             #region 命令模式
-            //CommandPattern commandPattern = new CommandPattern();
-            //commandPattern.Main();
+            CommandPattern commandPattern = new CommandPattern();
+            commandPattern.Main();
             #endregion
 
             #region 責任鏈模式
