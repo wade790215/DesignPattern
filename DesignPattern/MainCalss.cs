@@ -99,13 +99,13 @@ namespace DesignPattern
             #endregion
 
             #region 命令模式
-            CommandPattern commandPattern = new CommandPattern();
-            commandPattern.Main();
+            //CommandPattern commandPattern = new CommandPattern();
+            //commandPattern.Main();
             #endregion
 
             #region 責任鏈模式
-            //ChainOfResponsibilityPattern chainOfResponsibilityPattern = new ChainOfResponsibilityPattern();
-            //chainOfResponsibilityPattern.Main();
+            ChainOfResponsibilityPattern chainOfResponsibilityPattern = new ChainOfResponsibilityPattern();
+            chainOfResponsibilityPattern.Main();
             #endregion
 
             #region 中介者模式
