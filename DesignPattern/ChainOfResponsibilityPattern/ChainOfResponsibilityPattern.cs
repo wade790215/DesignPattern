@@ -1,5 +1,4 @@
 ﻿using System;
-using static DesignPattern.ChainOfResponsibilityPattern;
 
 namespace DesignPattern
 {
@@ -8,32 +7,140 @@ namespace DesignPattern
     {
         internal void Main()
         {
-            Request request = new Request()
+            //Request request = new Request()
+            //{
+            //    Name = "阿德",
+            //    Reason = "滑鼠壞掉",
+            //    ReasonType = ReasonType.Hardware
+            //};
+
+            //Approver eChen = new Director();
+            //Approver moneyDragon = new WarehouseManagement();
+
+            ////設定責任鍊
+            //eChen.SetSuccessor(moneyDragon);
+
+            //eChen.ProcessRequest(request);
+
+            var request = new JobRequest()
             {
                 Name = "阿德",
                 Reason = "滑鼠壞掉",
-                ReasonType = ReasonType.Hardware
+                ReasonType = ReasonType.Junior
             };
 
-            Approver eChen = new Director();
-            Approver moneyDragon = new WarehouseManagement();
+            SupportHanlder junior = new JuniorSupportHandler();
+            SupportHanlder middle = new MiddleSupportHandler();
+            SupportHanlder senior = new SeniorSupportHandler();
 
-            //設定責任鍊
-            eChen.SetSuccessor(moneyDragon);
+            junior.SetSuccessor(middle);
+            middle.SetSuccessor(senior);
 
-            eChen.ProcessRequest(request);
+            junior.HandleRequest(request);
+            Console.ReadLine();
+        }
+    }
+
+    #region Pratice 2
+
+    public interface SupportHanlder
+    {
+        void HandleRequest(JobRequest request);
+
+        void SetSuccessor(SupportHanlder successor);
+    }
+
+    public class JobRequest
+    {
+        public string Name { get; internal set; }
+        public string Reason { get; internal set; }
+        public ReasonType ReasonType { get; internal set; }
+    }
+
+    public class JuniorSupportHandler : SupportHanlder
+    {
+        private SupportHanlder successor;
+
+        public void HandleRequest(JobRequest request)
+        {
+            if (request.ReasonType == ReasonType.Junior)
+            {
+                Console.WriteLine($"我可以處理:{request.Reason}");
+            }
+            else
+            {
+                Console.WriteLine("我不能處理交給下一位");
+                successor.HandleRequest(request);
+            }
         }
 
-       
+        public void SetSuccessor(SupportHanlder successor)
+        {
+            this.successor = successor;
+        }
     }
+
+    public class MiddleSupportHandler : SupportHanlder
+    {
+        private SupportHanlder successor;
+
+        public void HandleRequest(JobRequest request)
+        {
+            if (request.ReasonType == ReasonType.Middle)
+            {
+                Console.WriteLine($"我可以處理:{request.Reason}");
+            }
+            else
+            {
+                Console.WriteLine("我不能處理交給下一位");
+                successor.HandleRequest(request);
+            }
+        }
+
+        public void SetSuccessor(SupportHanlder successor)
+        {
+            this.successor = successor;
+        }
+    }
+
+    public class SeniorSupportHandler : SupportHanlder
+    {
+        private SupportHanlder successor;
+
+        public void HandleRequest(JobRequest request)
+        {
+            if (request.ReasonType == ReasonType.Senior)
+            {
+                Console.WriteLine($"我可以處理:{request.Reason}");
+            }
+            else
+            {
+                Console.WriteLine("我不能處理交給下一位");
+                successor.HandleRequest(request);
+            }
+        }
+
+        public void SetSuccessor(SupportHanlder successor)
+        {
+            this.successor = successor;
+        }
+    }
+
+    #endregion
+
+
+    #region Pratice 1
     public enum ReasonType
     {
         Hardware,
         Software,
-        Code
+        Code,
+        Junior,
+        Middle,
+        Senior
     }
 
-    internal class Request
+    public class Request
     {
         public string Name { get; internal set; }
         public string Reason { get; internal set; }
@@ -96,5 +203,5 @@ namespace DesignPattern
             }
         }
     }
-
+    #endregion
 }

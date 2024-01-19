@@ -104,13 +104,13 @@ namespace DesignPattern
             #endregion
 
             #region 責任鏈模式
-            ChainOfResponsibilityPattern chainOfResponsibilityPattern = new ChainOfResponsibilityPattern();
-            chainOfResponsibilityPattern.Main();
+            //ChainOfResponsibilityPattern chainOfResponsibilityPattern = new ChainOfResponsibilityPattern();
+            //chainOfResponsibilityPattern.Main();
             #endregion
 
             #region 中介者模式
-            //MediatorPattern mediatorPattern = new MediatorPattern();
-            //mediatorPattern.Main();
+            MediatorPattern mediatorPattern = new MediatorPattern();
+            mediatorPattern.Main();
             #endregion
 
             #region 享元模式
