@@ -1,28 +1,66 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Xml.Linq;
 
 namespace DesignPattern
 {
     //享元模式
-    //將物件分為兩種，一種是內部狀態，一種是外部狀態
-    //內部狀態是不會改變的，外部狀態是會改變的
-    //內部狀態是可以共用的，外部狀態是不可以共用的
-    //外部狀態是由客戶端傳入的
-    //外部狀態是不可以共用的，所以要傳入
-    //內部狀態是可以共用的，所以要設計成靜態
-    //內部狀態是不會改變的，所以要設計成只讀
-    //內部狀態是不會改變的，所以要設計成只能在建構子設定
-
+    //當需要大量相同的物件時，可以使用享元模式來減少記憶體的使用
+    //每個使用者拿到的物件都是同一個物件，所以要注意物件的狀態
     internal class FlyweightPattern
     {
         internal void Main()
         {
-            var flyWeightFactory = new FlyweightFactory();
-            var flyWeight = flyWeightFactory.GetFlyweight(1);
-            flyWeight.Operation(100);
+            //var flyWeightFactory = new FlyweightFactory();
+            //var flyWeight = flyWeightFactory.GetFlyweight(1);
+            //flyWeight.Operation(100);
+
+            EquipmentFactory equipmentFactory = new EquipmentFactory();
+            Equipment equipment = new Equipment() {Name = "Sword", ATK = 100, DEF = 66 };
+            equipmentFactory.AddEquipment(equipment.Name, equipment);
+            Console.WriteLine(equipmentFactory.GetEquipment(equipment.Name).ATK);
+            Console.ReadLine();
         }
     }
 
+    #region Pratice2
+
+    public interface IEquipment
+    {
+        string Name { get; set; }
+        int ATK { get; set; }
+        int DEF { get; set; }
+
+    }
+
+    public class Equipment : IEquipment
+    {
+        public string Name { get; set; }
+        public int ATK { get; set; }
+        public int DEF { get; set; }
+    }
+
+    public class EquipmentFactory
+    {
+        private Dictionary<string, IEquipment> equipments = new Dictionary<string, IEquipment>();
+
+        public void AddEquipment(string key, IEquipment equipment)
+        {
+            equipments[key] = equipment;
+        }
+
+        //享元模式的核心概念是共享同一個物件，所以當找不到時回傳null而不是建立新物件
+        public IEquipment GetEquipment(string key)
+        {
+            if (!equipments.ContainsKey(key))
+                return null;
+            return equipments[key];
+        }
+    }
+
+    #endregion
+
+    #region Pratice 1
     public interface IFlyWeight
     {
         void Operation(int extrinsicstate);
@@ -55,4 +93,5 @@ namespace DesignPattern
             return flyweights[key];
         }
     }
+    #endregion
 }
