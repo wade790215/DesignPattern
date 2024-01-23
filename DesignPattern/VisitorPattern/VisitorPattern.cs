@@ -10,12 +10,87 @@ namespace DesignPattern
     {
         internal void Main()
         {
-            ICollidable player = new Player();
-            ICollidable enemy = new Enemy();
-            HandleCollision(player,enemy);
-            HandleHealing(player);
+            //ICollidable player = new Player();
+            //ICollidable enemy = new Enemy();
+            //HandleCollision(player,enemy);
+            //HandleHealing(player);
+
+            IComputerComponentAcceptor hardDrive = new HardDrive();
+            IComputerComponentAcceptor cpu = new CPU();
+            IComputerComponentAcceptor memory = new Memory();
+            var CCD =  new ComputerComponentDiagnostics();
+            hardDrive.Accept(CCD);
+            cpu.Accept(CCD);
+            memory.Accept(CCD);
+            Console.ReadLine();
         }
 
+        #region Pratice 2
+
+        //訪問者接口
+        public interface IComputerComponentVisitor
+        {
+            void VisitHardDrive(HardDrive hardDrive);
+            void VisitCPU(CPU cpu);
+            void VisitMemory(Memory memory);
+        }
+
+        //訪問者實作
+        public class ComputerComponentDiagnostics : IComputerComponentVisitor
+        {
+            void IComputerComponentVisitor.VisitCPU(CPU cpu)
+            {
+                Console.WriteLine($"CPU Brand:{cpu.Brand}");
+            }
+
+            void IComputerComponentVisitor.VisitHardDrive(HardDrive hardDrive)
+            {
+                Console.WriteLine($"HardDrive Brand:{hardDrive.Brand}");
+            }
+
+            void IComputerComponentVisitor.VisitMemory(Memory memory)
+            {
+                Console.WriteLine($"Memory Brand:{memory.Brand}");
+            }
+        }
+
+        //被訪問者接口
+        public interface IComputerComponentAcceptor
+        {
+            void Accept(IComputerComponentVisitor visitor);
+        }
+
+        //被訪問者實作
+        public class HardDrive : IComputerComponentAcceptor
+        {
+            public string Brand = "WD";
+            public void Accept(IComputerComponentVisitor visitor)
+            {
+                visitor.VisitHardDrive(this);
+            }
+        }
+
+        public class CPU : IComputerComponentAcceptor
+        {
+            public string Brand = "i7";
+            public void Accept(IComputerComponentVisitor visitor)
+            {
+                visitor.VisitCPU(this);
+            }
+        }
+
+        public class Memory : IComputerComponentAcceptor
+        {
+            public string Brand = "Kingston";
+            public void Accept(IComputerComponentVisitor visitor)
+            {
+                visitor.VisitMemory(this);
+            }
+        }
+
+        #endregion
+
+        #region Pratice 1
         //定義訪問條件
         public void HandleCollision(ICollidable a, ICollidable b)
         {
@@ -35,7 +110,7 @@ namespace DesignPattern
                 player.DecreaseHP();
                 Console.WriteLine($"相撞了..PlayerHealth:{player.Health}");
             }
-            
+
             public void Visit(Enemy enemy)
             {
                 enemy.DecreaseHP();
@@ -104,12 +179,14 @@ namespace DesignPattern
             {
                 health -= 1;
             }
-            
+
             public void IncreaseHP()
             {
                 health += 1;
             }
-
+            #endregion
         }
     }
+
+
 }
