@@ -95,6 +95,11 @@ namespace DesignPattern
         {
             Console.WriteLine("開燈");
         }
+
+        public void Off()
+        {
+            Console.WriteLine("關燈");
+        }
     }
 
     public class RemoteControl

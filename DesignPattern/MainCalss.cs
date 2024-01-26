@@ -128,6 +128,13 @@ namespace DesignPattern
             //SingletonPattern singletonPattern = new SingletonPattern();
             //singletonPattern.Main();
             #endregion
+
+            #region 練習
+
+            PraticeDesignPattern praticeDesignPattern = new PraticeDesignPattern();
+            praticeDesignPattern.Main();    
+
+            #endregion
         }
     }
 }
