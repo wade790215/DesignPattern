@@ -78,27 +78,14 @@ namespace DesignPattern
 
     public class LightOnCommand : ICommand
     {
-        private Light light;
-        public LightOnCommand(Light light)
+        private PraticeDesignPattern.Light light;
+        public LightOnCommand(PraticeDesignPattern.Light light)
         {
             this.light = light;
         }
         public void Execute()
         {
             light.On();
-        }
-    }
-
-    public class Light
-    {
-        public void On()
-        {
-            Console.WriteLine("開燈");
-        }
-
-        public void Off()
-        {
-            Console.WriteLine("關燈");
         }
     }
 

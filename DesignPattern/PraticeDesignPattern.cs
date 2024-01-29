@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace DesignPattern
 {
-    internal class PraticeDesignPattern
+    public class PraticeDesignPattern
     {
         public void Main()
         {
@@ -15,12 +15,12 @@ namespace DesignPattern
         {
             public void Main()
             {
-                NotiflySystem notiflySystem = new NotiflySystem();  
+                NotiflySystem notiflySystem = new NotiflySystem();
                 MyPhone myPhone = new MyPhone();
                 notiflySystem.AddOberserve(myPhone);
 
                 HomeDeviceCommand homeDeviceCommand = new HomeDeviceCommand();
-                homeDeviceCommand.SetNotiflySystem(notiflySystem);  
+                homeDeviceCommand.SetNotiflySystem(notiflySystem);
                 Light light = new Light();
                 Audio audio = new Audio();
                 IDeviceCommand lightOn = new LightOnCommand(light);
@@ -33,6 +33,7 @@ namespace DesignPattern
                 homeDeviceCommand.AddCommand(audioOff);
 
                 homeDeviceCommand.Execute(lightOn);
+                homeDeviceCommand.Execute(audioOn);
                 Console.ReadLine();
             }
         }
@@ -41,6 +42,7 @@ namespace DesignPattern
         public interface IDeviceCommand
         {
             void Execute();
+            DeviceStatus GetDeviceStatus();
         }
 
         public class HomeDeviceCommand
@@ -74,7 +76,7 @@ namespace DesignPattern
                 foreach (var deviceCommand in deviceCommands)
                 {
                     deviceCommand.Execute();
-                    notiflySystem.Notify();
+                    notiflySystem.Notify(deviceCommand.GetDeviceStatus());
                 }
             }
 
@@ -82,8 +84,8 @@ namespace DesignPattern
             {
                 if (deviceCommands.Contains(deviceCommand))
                 {
-                    deviceCommand.Execute();    
-                    notiflySystem.Notify(); 
+                    deviceCommand.Execute();
+                    notiflySystem.Notify(deviceCommand.GetDeviceStatus()); 
                 }
             }
         }
@@ -101,6 +103,11 @@ namespace DesignPattern
             {
                 light.On();
             }
+
+            public DeviceStatus GetDeviceStatus()
+            {
+                return light.GetDeviceStatus();
+            }
         }
 
         public class LightOffCommand : IDeviceCommand
@@ -115,6 +122,11 @@ namespace DesignPattern
             public void Execute()
             {
                 light.Off();
+            }
+
+            public DeviceStatus GetDeviceStatus()
+            {
+                return light.GetDeviceStatus();
             }
         }
 
@@ -131,6 +143,11 @@ namespace DesignPattern
             {
                 audio.On();
             }
+
+            public DeviceStatus GetDeviceStatus()
+            {
+                return audio.GetDeviceStatus();
+            }
         }
 
         public class AudioOffCommand : IDeviceCommand
@@ -146,40 +163,89 @@ namespace DesignPattern
             {
                 audio.Off();
             }
+
+            public DeviceStatus GetDeviceStatus()
+            {
+                return audio.GetDeviceStatus();
+            }
         }
 
-        public class Audio 
+        public class Audio : IDevice
         {
+            public string Brand { get; set; }
+            private DeviceStatus deviceStatus;
+
+            public Audio()
+            {
+                deviceStatus = new DeviceStatus("音響", "關閉音響","一般音響");
+            }
+
             public void On()
             {
-                Console.WriteLine("開啟音響");
+                deviceStatus.Status = "開啟音響";
+                Console.WriteLine(deviceStatus.Status);
             }
 
             public void Off()
             {
-                Console.WriteLine("關閉音響");
+                deviceStatus.Status = "關閉音響";
+                Console.WriteLine(deviceStatus.Status);
+            }
+
+            public DeviceStatus GetDeviceStatus()
+            {
+                return deviceStatus;
             }
         }
+
+        public class Light : IDevice
+        {
+            public string Brand { get; set; }
+            private DeviceStatus deviceStatus;
+
+            public Light()
+            {
+                deviceStatus = new DeviceStatus("燈", "關燈","一般燈");
+            }
+
+            public void On()
+            {
+                deviceStatus.Status = "開燈";
+                Console.WriteLine(deviceStatus.Status);
+            }
+
+            public void Off()
+            {
+                deviceStatus.Status = "關燈";
+                Console.WriteLine(deviceStatus.Status);
+            }
+
+            public DeviceStatus GetDeviceStatus()
+            {
+                return deviceStatus;
+            }
+        }
+
         #endregion
 
         #region 觀察者模式
 
         public class MyPhone : IOberserve
         {
-            public void Update()
+            public void Update(DeviceStatus status)
             {
-                Console.WriteLine("收到狀態改變通知");
+                Console.WriteLine($"[MyPhone] Received Update: Device - {status.DeviceName}, Status - {status.Status}, Time - {status.Timestamp}");
             }
         }
 
         public interface IOberserve
         {
-            void Update();
+            void Update(DeviceStatus deviceStatus);
         }
 
         public class NotiflySystem
-        { 
-            private List<IOberserve> oberserves = new List<IOberserve>();       
+        {
+            private List<IOberserve> oberserves = new List<IOberserve>();
 
             public void AddOberserve(IOberserve oberserve)
             {
@@ -192,16 +258,56 @@ namespace DesignPattern
                     oberserves.Remove(oberserve);
             }
 
-            public void Notify()
+            public void Notify(DeviceStatus deviceStatus)
             {
                 foreach (var oberserve in oberserves)
                 {
-                    oberserve.Update();
+                    oberserve.Update(deviceStatus);
                 }
             }
         }
 
         #endregion
 
+        #region 工廠模式
+
+        public class DeviceFactory
+        {
+            public IDevice CreateDevice(DeviceStatus deviceStatus)
+            {
+                switch(deviceStatus.DeviceName)
+                {
+                    case "燈":
+                        return new Light();
+                    case "音響":
+                        return new Audio();
+                    default:
+                        return null;
+                }
+            }
+        }
+
+        #endregion
+
+        public interface IDevice
+        {
+            string Brand { get; set; }     
+        }
+
+        public class DeviceStatus
+        {
+            public string DeviceName { get; set; }
+            public string Status { get; set; }
+            public string Brand { get; set; }
+            public DateTime Timestamp { get; set; }
+
+            public DeviceStatus(string deviceName, string status,string brand)
+            {
+                DeviceName = deviceName;
+                Status = status;
+                Brand = brand;
+                Timestamp = DateTime.Now;
+            }
+        }
     }
 }
