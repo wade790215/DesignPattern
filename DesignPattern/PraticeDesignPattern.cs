@@ -37,7 +37,12 @@ namespace DesignPattern
 
                 homeDeviceCommand.Execute(lightOn);
                 homeDeviceCommand.Execute(audioOn);
+
                 myPhone.UseHomeStrategy(new LeavingHome());
+
+                CountdownToAction countdownToAction = new CountdownToAction(smartLight as IDecorator, 3, () => smartLight.Off());
+                countdownToAction.Decorate();   
+
                 Console.ReadLine();
             }
         }
@@ -311,6 +316,52 @@ namespace DesignPattern
             void Decorate();
         }
 
+        public class Decorator : IDecorator
+        {
+            private IDecorator decorator;
+
+           public Decorator(IDecorator decorator)
+            {
+                this.decorator = decorator;
+            }
+
+            public virtual void Decorate()
+            {
+                decorator.Decorate();
+            }
+        }
+
+        public class CountdownToAction : Decorator
+        {
+            private Action action;
+            private int seconds;
+
+            public CountdownToAction(IDecorator decorator,int seconds,Action action) : base(decorator)
+            {
+                this.seconds = seconds;
+                this.action = action;
+            }
+
+            public void CountDownToActionDevice()
+            {
+                Console.WriteLine("倒數計時開始");
+                while (seconds > 0)
+                {
+                    Console.WriteLine($"倒數計時: {seconds} 秒");
+                    System.Threading.Thread.Sleep(1000);
+                    seconds--;
+                }
+                Console.WriteLine("倒數計時結束");
+                action?.Invoke();
+            }
+
+            public override void Decorate()
+            {
+                CountDownToActionDevice();  
+                base.Decorate();
+            }
+        }
+
         #endregion
 
         #region Interface
@@ -364,7 +415,7 @@ namespace DesignPattern
             }
         }
 
-        public class Audio : IDeviceInfo, IDeviceControl
+        public class Audio : IDeviceInfo, IDeviceControl ,IDecorator
         {
             public string Brand { get; set; }
             private DeviceStatus deviceStatus;
@@ -390,9 +441,14 @@ namespace DesignPattern
             {
                 return deviceStatus;
             }
+
+            public virtual void Decorate()
+            {
+                Console.WriteLine("AudioDecorate");
+            }
         }
 
-        public class Light : IDeviceInfo, IDeviceControl
+        public class Light : IDeviceInfo, IDeviceControl,IDecorator
         {
             public string Brand { get; set; }
             private DeviceStatus deviceStatus;
@@ -417,6 +473,11 @@ namespace DesignPattern
             public DeviceStatus GetDeviceStatus()
             {
                 return deviceStatus;
+            }
+
+            public virtual void Decorate()
+            {
+                Console.WriteLine("LightDecorate");
             }
         }
 
