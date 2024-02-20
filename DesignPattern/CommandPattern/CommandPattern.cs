@@ -140,5 +140,4 @@ namespace DesignPattern
         }
     }
     #endregion
-
 }
