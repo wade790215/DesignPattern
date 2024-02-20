@@ -394,7 +394,6 @@ namespace DesignPattern
             void Update(DeviceStatus deviceStatus);
         }
 
-
         #endregion
 
         #region Property
