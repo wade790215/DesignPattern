@@ -1,13 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Net.Http.Headers;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DesignPattern
+﻿namespace DesignPattern
 {
     internal class MainCalss
     {
@@ -131,8 +122,8 @@ namespace DesignPattern
 
             #region 練習
 
-            PraticeDesignPattern praticeDesignPattern = new PraticeDesignPattern();
-            praticeDesignPattern.Main();    
+            //PraticeDesignPattern praticeDesignPattern = new PraticeDesignPattern();
+            //praticeDesignPattern.Main();    
 
             #endregion
         }
