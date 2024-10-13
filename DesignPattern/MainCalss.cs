@@ -2,7 +2,7 @@
 {
     internal class MainCalss
     {
-        static void Main(string[] args)
+        static void Main(string[] args) 
         {
             #region 依賴反轉
             //DIP dip = new DIP();
@@ -50,8 +50,11 @@
             #endregion
 
             #region 觀察者模式
-            //ObserverPattern observerPattern = new ObserverPattern();
-            //observerPattern.Main();
+            // ObserverPattern observerPattern = new ObserverPattern();
+            // observerPattern.Main();
+            
+            //WeatherObseverPratice weatherObseverPratice = new WeatherObseverPratice();
+            //weatherObseverPratice.Main();
             #endregion
 
             #region 工廠方法模式
@@ -121,10 +124,8 @@
             #endregion
 
             #region 練習
-
             //PraticeDesignPattern praticeDesignPattern = new PraticeDesignPattern();
             //praticeDesignPattern.Main();    
-
             #endregion
         }
     }

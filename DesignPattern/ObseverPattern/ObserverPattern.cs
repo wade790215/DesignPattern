@@ -167,17 +167,17 @@ namespace DesignPattern
         //    }
         //}
 
-        //public abstract class Engineer
-        //{
-        //    protected string name;
-        //    protected ISubject subject;
-        //    public Engineer(string name, ISubject subject)
-        //    {
-        //        this.name = name;
-        //        this.subject = subject;
-        //    }
-        //    public abstract void Update();
-        //}
+        // public abstract class Engineer
+        // {
+        //     protected string name;
+        //     protected ISubject subject;
+        //     public Engineer(string name, ISubject subject)
+        //     {
+        //         this.name = name;
+        //         this.subject = subject;
+        //     }
+        //     public abstract void Update();
+        // }
 
         //public interface ISubject
         //{
