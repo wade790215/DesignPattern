@@ -50,6 +50,7 @@
     <Compile Include="ChainOfResponsibilityPattern\ChainOfResponsibilityPattern.cs" />
     <Compile Include="CommandPattern\CommandPattern.cs" />
     <Compile Include="CompositePattern\CompositePattern.cs" />
+    <Compile Include="DesignPatternBookPratice\DesignPatternBookPratice.cs" />
     <Compile Include="FactoryMethodPattern\AbstractFactoryPattern.cs" />
     <Compile Include="BuilderPattern\BuilderPattern.cs" />
     <Compile Include="DecoratorPattern\DecoratorPattern.cs" />
@@ -77,6 +78,5 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
