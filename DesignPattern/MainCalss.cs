@@ -99,8 +99,8 @@ namespace DesignPattern
             #endregion
 
             #region 命令模式
-            CommandPattern commandPattern = new CommandPattern();
-            commandPattern.Main();
+            //CommandPattern commandPattern = new CommandPattern();
+            //commandPattern.Main();
             #endregion
 
             #region 責任鏈模式
@@ -116,6 +116,7 @@ namespace DesignPattern
             #region 享元模式
             //FlyweightPattern flyweightPattern = new FlyweightPattern();
             //flyweightPattern.Main();
+            //flyweightPattern.Main();
             #endregion
 
             #region 訪問者模式
@@ -126,6 +127,13 @@ namespace DesignPattern
             #region 單例模式
             //SingletonPattern singletonPattern = new SingletonPattern();
             //singletonPattern.Main();
+            #endregion
+
+            #region 練習
+
+            PraticeDesignPattern praticeDesignPattern = new PraticeDesignPattern();
+            praticeDesignPattern.Main();    
+
             #endregion
         }
     }

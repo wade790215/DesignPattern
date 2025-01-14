@@ -11,17 +11,114 @@ namespace DesignPattern
     {
         internal void Main()
         {
-            Mediator mediator = new PM();
-            Colleague programmer = new Programmer(mediator, "前端");
-            Colleague art = new Art(mediator, "美術");
-            mediator.AddColleague(programmer);
-            mediator.AddColleague(art);
+            //Mediator mediator = new PM();
+            //Colleague programmer = new Programmer(mediator, "前端");
+            //Colleague art = new Art(mediator, "美術");
+            //mediator.AddColleague(programmer);
+            //mediator.AddColleague(art);
 
-            programmer.SendTo("幫我放物件到美術場景內", art);
-            art.SendAllExceptMyself("前端們幫我開發好用工具");
+            //programmer.SendTo("幫我放物件到美術場景內", art);
+            //art.SendAllExceptMyself("前端們幫我開發好用工具");
+
+            ChatRoom chatRoom = new ChatRoom();
+
+            ChatUser user1 = new ChatUser("1", "阿德");
+            ChatUser user2 = new ChatUser("2", "阿明");
+            ChatUser user3 = new ChatUser("3", "阿華");
+            user1.SetChatRoom(chatRoom);
+            user2.SetChatRoom(chatRoom);
+            user3.SetChatRoom(chatRoom);
+
+            chatRoom.AddUser(user1);
+            chatRoom.AddUser(user2);
+            chatRoom.AddUser(user3);
+
+            user1.SendMessageToAll("大家好");
+            user1.SendMessageTo("你好", "2");
+            Console.ReadLine();
         }
     }
 
+    #region Pratice 1
+
+    //中介者的底層
+    public interface IChatRoom
+    {
+        void SendMessageTo(string message, string userId, string targetID);
+
+        void SendMessageToAll(string message, string fromUserId);
+    }
+
+    //扮演中介者角色
+    public class ChatRoom : IChatRoom
+    {
+        private List<ChatUser> chatUsers = new List<ChatUser>();
+
+        public void AddUser(ChatUser chatUser)
+        {
+            chatUsers.Add(chatUser);
+        }
+
+        public void SendMessageTo(string message, string fromID, string targetID)
+        {
+            if(chatUsers.Exists(c => c.UserId == fromID) && chatUsers.Exists(c => c.UserId == targetID))
+            {
+                chatUsers.Find(c => c.UserId == targetID).ReceiveMessage(fromID, message);
+            }
+        }
+
+        public void SendMessageToAll(string message, string fromUserId)
+        {
+            if (chatUsers.Count < 0)
+                return;
+
+            foreach (var user in chatUsers)
+            {
+                if (user.UserId != fromUserId)
+                    user.ReceiveMessage(fromUserId, message);
+            }
+        }
+    }
+
+
+    //扮演同事角色，每個同事都知道中介者，但不知道其他同事
+    //同事也可以抽象底層出來
+    public class ChatUser
+    {
+        private IChatRoom chatRoom;
+
+        public string UserId { get; set; }
+        public string UserName { get; set; }
+        public ChatUser(string userId, string userName)
+        {
+            UserId = userId;
+            UserName = userName;
+        }
+
+        public void SetChatRoom(IChatRoom chatRoom)
+        {
+            this.chatRoom = chatRoom;
+        }
+
+        public void SendMessageTo(string message, string targetID)
+        {
+            chatRoom.SendMessageTo(message, UserId, targetID);
+        }
+
+        public void SendMessageToAll(string message)
+        {
+            chatRoom.SendMessageToAll(message,UserId);
+        }
+
+        public void ReceiveMessage(string fromUserId, string message)
+        {
+            Console.WriteLine($"我是:{UserId}，收到 {fromUserId} 的消息: {message}");
+        }
+    }
+
+    #endregion
+
+    #region Pratice 2
     internal abstract class Mediator
     {
         protected List<Colleague> ColleagueList = new List<Colleague>();
@@ -59,7 +156,7 @@ namespace DesignPattern
             mediator.SendAllExceptMyself(message, this);
         }
 
-        internal virtual void SendTo(string message , Colleague colleague)
+        internal virtual void SendTo(string message, Colleague colleague)
         {
             mediator.SendTo(message, colleague);
         }
@@ -72,15 +169,15 @@ namespace DesignPattern
         {
             foreach (var item in ColleagueList)
             {
-                if(item != colleague)
-                    item.Notify(message);  
+                if (item != colleague)
+                    item.Notify(message);
             }
         }
 
         internal override void SendTo(string message, Colleague colleague)
         {
             Colleague targetColleague = GetColleague(colleague);
-            targetColleague?.Notify(message);    
+            targetColleague?.Notify(message);
         }
     }
 
@@ -107,4 +204,5 @@ namespace DesignPattern
             Console.WriteLine($"美術收到:{message}");
         }
     }
+    #endregion 
 }
